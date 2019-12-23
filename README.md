@@ -7,4 +7,4 @@ App for third party sellers and buyers (i.e. craigslist, Offerup, LetGo) which c
 
 Trello: https://trello.com/b/gixvWqmQ/secondhandsearch
 
-Heroku: 
+Heroku: https://dashboard.heroku.com/apps/secondhandsearch
