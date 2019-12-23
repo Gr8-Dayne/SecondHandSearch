@@ -49,7 +49,7 @@ A user can  view detailed view and veiw the location on a map to get directionsl
 Data Flow
 Describe the flow of data in your application. Write out what happens from the time the user begins using the app to the time the user is done with the app. Think about the “Happy Path” of the application. Describe through visuals and text what requests are made, and what data is processed, in addition to any other details about how the user moves through the site.
 
-![Drag Racing](IMG_0170.jpg)
+![](images/IMG_0170.jpg)
 
 Non-Functional Requirements (301 & 401 only)
 Non-functional requirements are requirements that are not directly related to the functionality of the application but still important to the app.
