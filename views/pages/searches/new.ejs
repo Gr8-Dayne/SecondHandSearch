@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Car Search</title>
+</head>
+<body>
+    <!-- Main page/form to search cars and button to view saved cars -->
+    <a href="savedCars">
+        <button>Saved Cars</button>
+    </a>
+    <form action="/searchResult" method="POST">
+        <fieldset>
+            <legend>Search Vehicle</legend>
+            <label for="">
+                Make:
+                <input type="text" name="make">
+            </label>
+            <label for="">
+                Model:
+                <input type="text" name="model" id="">
+            </label>
+            <label for="">
+                Year:
+                <input type="text" name="year">
+            </label>
+            <label for="">
+                Location:
+                <input type="text" name="location">
+            </label>
+            <input type="submit" name="submit" value="SEARCH">
+        </fieldset>
+    </form>
+</body>
+</html>
