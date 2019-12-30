@@ -2,7 +2,31 @@
   color: black;
 }
 
+#header1{
+  background-color: grey;
+  height: 5vh;
+}
+
+#header2{
+  background-color: rgba(130, 130, 130, 0.350);
+  height: 20vh;
+  
+}
+
+#navbar{
+  display: flex;
+  justify-content: space-between;
+  vertical-align: center;
+  flex-direction: row;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
 h1{
+  text-align: center;
+}
+
+main{
   text-align: center;
 }
 
@@ -10,4 +34,18 @@ body {
   background-color: white;
   left: 0;
   right: 0;
+}
+
+#searchForm{
+  display: flex;
+  justify-content: center;
+  vertical-align: center;
+  flex-direction: row;
+  text-align: center;
+}
+
+footer{
+  bottom: 0px;
+  position: fixed;
+  text-align: center;
 }
