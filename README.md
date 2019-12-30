@@ -16,10 +16,10 @@ Heroku: https://dashboard.heroku.com/apps/secondhandsearch
                                 WIREFRAME
 
 =====================================================================================                    
-![](images/IMG_0166.jpg)
-![](images/IMG_0165.jpg)
-![](images/IMG_0168.jpg)
-![](images/IMG_0169.jpg)
+![](README_IMGS/IMG_0166.jpg)
+![](README_IMGS/IMG_0165.jpg)
+![](README_IMGS/IMG_0168.jpg)
+![](README_IMGS/IMG_0169.jpg)
 
 =====================================================================================
 
@@ -67,7 +67,7 @@ Heroku: https://dashboard.heroku.com/apps/secondhandsearch
 
 =====================================================================================   
 
-![](images/Domain_Modeling.jpg)
+![](README_IMGS/Domain_Modeling.jpg)
 
 =====================================================================================
 
@@ -75,7 +75,7 @@ Heroku: https://dashboard.heroku.com/apps/secondhandsearch
 
 =====================================================================================   
 
-![](images/EntityRelationDiagram.png)
+![](README_IMGS/EntityRelationDiagram.png)
 
 User table is to login in users to veiw their own data from the database.
 Vehicle table is to store vehicle data from API.
