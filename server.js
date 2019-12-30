@@ -20,7 +20,8 @@ client.connect();
 
 function Vehicles(listing) {
   this.title = listing.title;
-  this.price = listing.price;
+  this.lat = listing.mapUrl;
+  this.long = listing.mapUrl;
   this.image = listing.images[0];
   this.url = listing.url;
 }

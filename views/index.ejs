@@ -42,14 +42,6 @@
                 <input type="submit" name="submit" value="SEARCH">
             </fieldset>
         </form>
-        <section id="allVehicle">
-            <% vehicles.forEach((vehicle, index) => { %>
-            <h2><%= vehicle.title %></h2>
-            <h3>price</h3>
-
-            <button id="<%= index %>" class="detailsBtn">>View Details</button>
-            <% }) %>
-        </section>
     </main>
     <footer> &c Second Hand Search Team</footer>
 </body>
