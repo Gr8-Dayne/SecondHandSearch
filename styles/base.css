@@ -1,5 +1,5 @@
 *{
-  color: white;
+  color: black;
 }
 
 h1{
@@ -7,11 +7,7 @@ h1{
 }
 
 body {
-  background-color: black;
-  /* border: width 2px;
-  border-style: solid;
-  border-color: purple; */
-  margin-top: 16vh;
+  background-color: white;
   left: 0;
   right: 0;
 }
