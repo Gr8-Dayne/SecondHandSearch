@@ -13,16 +13,14 @@
     <header>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="savedCars">
-                    <button>Saved Cars</button>
-                </a></li>
+            <li><a href="savedCars">Saved Cars</a></li>
         </ul>
         <h1>Second Hand Search</h1>
         <form action="">Log in</form>
     </header>
 
     <main>
-        <form id="searchForm" action="/searchResult" method="POST">
+        <form id="searchForm" action="/" method="POST">
             <fieldset>
                 <legend>Search Vehicle</legend>
                 <label>
@@ -44,15 +42,6 @@
                 <input type="submit" name="submit" value="SEARCH">
             </fieldset>
         </form>
-        <section id="allVehicle">
-            <% vehicles.forEach((vehicle, index) => { %>
-            <h2><%= vehicle.title %></h2>
-            <h3>price</h3>
-    
-            <!-- Liked it? Check the details of the car -->
-            <button id="<%= index %>" class="detailsBtn">>View Details</button>
-            <% }) %>
-        </section>
     </main>
     <footer> &c Second Hand Search Team</footer>
 </body>
