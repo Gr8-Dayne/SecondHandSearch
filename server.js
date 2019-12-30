@@ -20,8 +20,8 @@ client.connect();
 
 function Vehicles(listing) {
   this.title = listing.title;
-  this.lat = listing.mapUrl.slice(37, 43);
-  this.long = listing.mapUrl.slice(47, 55);
+  this.lat = listing.mapUrl.slice(37, 45);
+  this.long = listing.mapUrl.slice(47, 57);
   this.image = listing.images[0];
   this.url = listing.url;
 }
@@ -36,7 +36,6 @@ function getSearchPage(req, res) {
 
 
 function postSearchResults(req, response) {
-  console.log('req :', req);
   const
     craigslist = require('node-craigslist'),
     clientCL = new craigslist.Client({
