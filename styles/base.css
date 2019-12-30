@@ -1,0 +1,17 @@
+*{
+  color: white;
+}
+
+h1{
+  text-align: center;
+}
+
+body {
+  background-color: black;
+  /* border: width 2px;
+  border-style: solid;
+  border-color: purple; */
+  margin-top: 16vh;
+  left: 0;
+  right: 0;
+}
