@@ -59,9 +59,18 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 
 //TODO: ensure the username is the actual data being pulled
 function checkUsernameWithDatabase(req, res) {
-  const instruction = `INSERT INTO users (Username) VALUES($1) RETURNING id`;
+  const checkInstruction = `Select * FROM users WHERE Username = $1`;
   const value = [req.body.username];
-  client.query(instruction, value).then(sqlRes => console.log('sqlRes :', sqlRes));
+  client.query(checkInstruction, value).then(sqlResult => {
+    if (sqlResult.rowCount > 0) {
+      console.log('The user is already here');
+    } else {
+      const instruction = `INSERT INTO users (Username) VALUES($1) RETURNING id`;
+      client.query(instruction, value).then(sqlRes => console.log('sqlRes :', sqlRes));
+    }
+  })
+
+
 }
 
 function getSearchPage(req, res) {
@@ -101,6 +110,7 @@ async function postSearchResults(req, res) {
     errorHandler(error, res);
   }
 }
+
 
 async function saveToDatabase(req, res) {
   let marketValue = await retrieveAndReturnMarketPrice();
