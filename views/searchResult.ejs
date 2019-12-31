@@ -9,14 +9,14 @@
 </head>
 <body>
     <%- include('partials/header') %>
+    <%- include('partials/searchForm') %>
     <section id="allVehicles">
-            <% for(let i = 0; i < 10; i++) { %>
-                <div id="carInstance">
-                    <h2><%= vehicles[i].title %></h2>
-                    <h3>price</h3>
-                    <img src="<%= vehicles[i].image %>" alt="image">
-                    <input type="checkbox" name="vehicle">
-                </div>
+            <% for(let i = 0; i < vehicles.length; i++) { %>
+                <h2><%= vehicles[i].title %></h2>
+                <h3>price</h3>
+                <img src="<%= vehicles[i].image %>" alt="image">
+                <input type="checkbox" name="vehicle">
+                <% if(i=== 9) {i = vehicles.length} %>
             <% } %>	
     </section>    
     <footer> &copy;SecondHandSearch Team </footer>
