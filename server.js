@@ -36,8 +36,6 @@ function Vehicles(listing, price) {
 app.get('/', getSearchPage);
 app.post('/', postSearchResults);
 app.post('/save', saveToDatabase);
-
-
 app.get('/contact', (req, res) => {
   res.render('contact');
 })
