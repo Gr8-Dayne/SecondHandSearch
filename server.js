@@ -25,17 +25,13 @@ function Vehicles(listing) {
   this.image = listing.images[0];
   this.url = listing.url;
 }
-app.get('/', userLogin)
+
 app.get('/', getSearchPage);
 app.post('/', postSearchResults);
-
-
 
 function getSearchPage(req, res) {
   res.render('index');
 }
-
-
 
 function postSearchResults(req, response) {
   const
