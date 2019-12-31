@@ -36,7 +36,7 @@ function Vehicles(listing, price) {
   this.url = listing.url;
 }
 //TODO: change the routes to the new ejs pages once login, search, and results are separated
-app.get('/', userLogin);
+app.get('/', getLoginPage);
 app.post('/login', checkUsernameWithDatabase);
 app.get('/index', getSearchPage);
 app.post('/', postSearchResults);
@@ -64,6 +64,7 @@ function checkUsernameWithDatabase(req, res) {
   client.query(checkInstruction, value).then(sqlResult => {
     if (sqlResult.rowCount > 0) {
       console.log('The user is already here');
+      console.log('sqlResult.rows[0].id :', sqlResult.rows[0].id);
     } else {
       const instruction = `INSERT INTO users (Username) VALUES($1) RETURNING id`;
       client.query(instruction, value).then(sqlRes => console.log('sqlRes :', sqlRes));
@@ -73,8 +74,8 @@ function checkUsernameWithDatabase(req, res) {
 
 }
 
-function getSearchPage(req, res) {
-  res.render('index');
+function getLoginPage(req, res) {
+  res.render('login');
 }
 
 async function postSearchResults(req, res) {
