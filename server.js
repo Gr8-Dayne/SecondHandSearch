@@ -60,15 +60,17 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 //TODO: ensure the username is the actual data being pulled
 function checkUsernameWithDatabase(req, res) {
   const checkInstruction = `Select * FROM users WHERE Username = $1`;
-  const value = [req.body.username];
+  const value = [req.body.username.toLowerCase()];
   client.query(checkInstruction, value).then(sqlResult => {
     if (sqlResult.rowCount > 0) {
       console.log('The user is already here');
-      console.log('sqlResult.rows[0].id :', sqlResult.rows[0].id);
       res.render('index', { userId: [{ id: sqlResult.rows[0].id }] });
     } else {
       const instruction = `INSERT INTO users (Username) VALUES($1) RETURNING id`;
-      client.query(instruction, value).then(sqlRes => console.log('sqlRes :', sqlRes));
+      client.query(instruction, value).then(sqlRes => {
+        res.render('index', { userId: [{ id: sqlRes.rows[0].id }] });
+
+      })
     }
   })
 
