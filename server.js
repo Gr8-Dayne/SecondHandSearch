@@ -31,11 +31,13 @@ function Vehicles(listing) {
 app.get('/', getSearchPage);
 app.post('/', postSearchResults);
 
+app.get('/contact', (req, res) => {
+  res.render('contact');
+})
+
 function getSearchPage(req, res) {
   res.render('index');
 }
-
-
 
 function postSearchResults(req, res) {
 
@@ -60,7 +62,7 @@ function postSearchResults(req, res) {
     .catch((err) => {
       console.error(err);
     });
-    console.log(vehicleResultsArray);
+  console.log(vehicleResultsArray);
   res.render('searchResult.ejs', { vehicles: vehicleResultsArray });
 }
 
