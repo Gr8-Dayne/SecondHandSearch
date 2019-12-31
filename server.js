@@ -60,6 +60,7 @@ function postSearchResults(req, res) {
     .catch((err) => {
       console.error(err);
     });
+    console.log(vehicleResultsArray);
   res.render('searchResult.ejs', { vehicles: vehicleResultsArray });
 }
 
