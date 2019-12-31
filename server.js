@@ -25,9 +25,11 @@ function Vehicles(listing) {
   this.image = listing.images[0];
   this.url = listing.url;
 }
-
+app.get('/', userLogin)
 app.get('/', getSearchPage);
 app.post('/', postSearchResults);
+
+
 
 function getSearchPage(req, res) {
   res.render('index');
@@ -49,12 +51,18 @@ function postSearchResults(req, response) {
     .search(options, `${req.body.year} ${req.body.make} ${req.body.model}`)
     .then((listings) => listings.forEach(listing => clientCL.details(listing).then(detail => {
       let vehicleResult = new Vehicles(detail);
-      console.log(vehicleResult);
-
+      saveDatatoDatabase(vehicleResult);
     })))
     .catch((err) => {
       console.error(err);
     });
+}
+
+function saveDatatoDatabase(vehicleConst) {
+  console.log('vehicleConst :', vehicleConst);
+  const instructions = `INSERT INTO vehicles (title, lat, long, image_URL, CL_URL) VALUES ($1, $2, $3, $4, $5)`;
+  const values = [vehicleConst.title, vehicleConst.lat, vehicleConst.long, vehicleConst.image, vehicleConst.url];
+  client.query(instructions, values);
 }
 
 app.listen(PORT, () => console.log(`App is running on ${PORT}`));
