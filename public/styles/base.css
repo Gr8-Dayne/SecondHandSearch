@@ -14,10 +14,9 @@
 }
 
 #header2{
-  background-color: rgba(130, 130, 130, 0.596);
   height: 15vh;
   text-align: center;
-  display: none;
+  background-color: rgba(130, 130, 130, 0.596);
   /* text-align: center; */
   /* display: flex; */
   /* flex-direction: row; */
