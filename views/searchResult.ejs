@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Result</title>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <%- include('../partials/searchForm') %>
+    <section id="allVehicles">
+            <% for(let i = 0; i < 10; i++) { %>
+                <h2><%= vehicles[i].title %></h2>
+                <h3>price</h3>
+                <img src="<%= vehicles[i].image %>" alt="image">
+                <input type="checkbox" name="vehicle">
+            <% } %>	
+    </section>    
+</body>
+</html>

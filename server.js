@@ -18,6 +18,8 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', error => console.error(error));
 client.connect();
 
+let vehicleResultsArray = [];
+
 function Vehicles(listing) {
   this.title = listing.title;
   this.lat = listing.mapUrl.slice(37, 45);
@@ -33,7 +35,10 @@ function getSearchPage(req, res) {
   res.render('index');
 }
 
-function postSearchResults(req, response) {
+
+
+function postSearchResults(req, res) {
+
   const
     craigslist = require('node-craigslist'),
     clientCL = new craigslist.Client({
@@ -45,13 +50,17 @@ function postSearchResults(req, response) {
 
   clientCL
     .search(options, `${req.body.year} ${req.body.make} ${req.body.model}`)
-    .then((listings) => listings.forEach(listing => clientCL.details(listing).then(detail => {
-      let vehicleResult = new Vehicles(detail);
-      saveDatatoDatabase(vehicleResult);
-    })))
+    .then((listings) =>
+      listings.forEach(listing =>
+        clientCL.details(listing).then(detail => {
+          let vehicleResult = new Vehicles(detail);
+          saveDatatoDatabase(vehicleResult);
+          vehicleResultsArray.push(vehicleResult);
+        })))
     .catch((err) => {
       console.error(err);
     });
+  res.render('searchResult.ejs', { vehicles: vehicleResultsArray });
 }
 
 function saveDatatoDatabase(vehicleConst) {

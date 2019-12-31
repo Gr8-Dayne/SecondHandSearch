@@ -11,50 +11,10 @@
 
 <body>
     <!-- Main page/form to search cars and button to view saved cars -->
-    <header id="header1">
-        <ul id="navbar">
-            <li><a href="/">Home</a></li>
-            <li><a href="savedCars">My Cars</a></li>
-            <li><h1>Second Hand Search</h1></li>
-            <li><a href="/">About</a></li>
-            <li><a href="/">Contact Us</a></li>
-        </ul>
-    </header>
+    <%- include('../partials/header') %>
+    <%- include('../partials/searchForm') %>
 
-    <header id="header2">
-        <form id="searchForm" action="/" method="POST">
-            <fieldset>
-                <legend>Find your next money pit here!</legend>
-                <label>
-                    Make:
-                    <input type="text" name="make">
-                </label>
-                <label>
-                    Model:
-                    <input type="text" name="model" id="">
-                </label>
-                <label>
-                    Year:
-                    <input type="text" name="year">
-                </label>
-                <label>
-                    Location:
-                    <input type="text" name="location">
-                </label>
-                <input type="submit" name="submit" value="SEARCH">
-            </fieldset>
-        </form>
-    </header>
-
-    <main>
-        <form id="login" action="">
-            <h3>Login</h3>
-            Username:
-            <input type="text" name="username" required>
-            <input type="submit" value="submit">
-        </form>
-    </main>
-    <footer> &copy;SecondHandSearch Team</footer>
+    <footer> &c Second Hand Search Team</footer>
 </body>
 
 </html>
