@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Result</title>
+    <link rel="stylesheet" href="styles/ultimate.css">
+    <title>Results</title>
 </head>
 <body>
-    <%- include('../partials/header') %>
-    <%- include('../partials/searchForm') %>
+    <%- include('partials/header') %>
     <section id="allVehicles">
             <% for(let i = 0; i < 10; i++) { %>
-                <h2><%= vehicles[i].title %></h2>
-                <h3>price</h3>
-                <img src="<%= vehicles[i].image %>" alt="image">
-                <input type="checkbox" name="vehicle">
+                <div id="carInstance">
+                    <h2><%= vehicles[i].title %></h2>
+                    <h3>price</h3>
+                    <img src="<%= vehicles[i].image %>" alt="image">
+                    <input type="checkbox" name="vehicle">
+                </div>
             <% } %>	
     </section>    
+    <footer> &copy;SecondHandSearch Team </footer>
 </body>
 </html>
