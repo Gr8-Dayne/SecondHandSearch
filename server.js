@@ -36,8 +36,13 @@ function Vehicles(listing, price) {
   this.url = listing.url;
 }
 //TODO: change the routes to the new ejs pages once login, search, and results are separated
+<<<<<<< HEAD
 app.post('/', userLogin);
 app.get('/index', getSearchPage);
+=======
+app.get('/', getSearchPage);
+app.post('/login', userLogin);
+>>>>>>> Login data sent to database
 app.post('/', postSearchResults);
 app.post('/save', saveToDatabase);
 app.get('/savedCars', displaySavedCars);
