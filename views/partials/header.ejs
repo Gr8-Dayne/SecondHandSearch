@@ -1,6 +1,6 @@
 <header id="header1">
     <ul id="navbar">
-        <li><a href="/">Home</a></li>
+        <li><button onclick="displaySearch()">Search</button></li>
         <li><a href="savedCars">My Cars</a></li>
         <li>
             <h1>Second Hand Search</h1>
@@ -9,3 +9,42 @@
         <li><a href="/">Contact Us</a></li>
     </ul>
 </header>
+
+<header id="header2">
+    <form id="searchForm" action="/" method="POST">
+        <fieldset>
+            <ul>
+                <li><legend>Find your next money pit!</legend></li>
+                <li><label>
+                    Make:
+                    <input type="text" name="make">
+                </label></li>
+                <li><label>
+                    Model:
+                    <input type="text" name="model" id="">
+                </label></li>
+                <li><label>
+                    Year:
+                    <input type="text" name="year">
+                </label></li>
+                <li><label>
+                    Location:
+                    <input type="text" name="location">
+                </label></li>
+                <li><input type="submit" name="submit" value="SEARCH"></li>
+            </ul>
+        </fieldset>
+    </form>
+</header>
+
+<script>
+function displaySearch(){
+  var searchBar = document.getElementById("header2");
+
+  if (searchBar.style.display === "none") {
+    searchBar.style.display = "inline";
+  } else {
+    searchBar.style.display = "none";
+  }
+}
+</script>
