@@ -65,6 +65,7 @@ function checkUsernameWithDatabase(req, res) {
     if (sqlResult.rowCount > 0) {
       console.log('The user is already here');
       console.log('sqlResult.rows[0].id :', sqlResult.rows[0].id);
+      res.render('index', { userId: [{ id: sqlResult.rows[0].id }] });
     } else {
       const instruction = `INSERT INTO users (Username) VALUES($1) RETURNING id`;
       client.query(instruction, value).then(sqlRes => console.log('sqlRes :', sqlRes));
@@ -106,7 +107,7 @@ async function postSearchResults(req, res) {
         errorHandler(error, res);
       }
     }
-    res.render('searchResult', { vehicles: vehicleResultsArray });
+    res.render('searchResult.ejs', { vehicles: vehicleResultsArray, userId: [{ id: req.params.id }] });
   } catch (error) {
     errorHandler(error, res);
   }
