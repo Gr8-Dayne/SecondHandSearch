@@ -36,13 +36,9 @@ function Vehicles(listing, price) {
   this.url = listing.url;
 }
 //TODO: change the routes to the new ejs pages once login, search, and results are separated
-<<<<<<< HEAD
-app.post('/', userLogin);
+app.get('/', userLogin);
+app.post('/login', checkUsernameWithDatabase);
 app.get('/index', getSearchPage);
-=======
-app.get('/', getSearchPage);
-app.post('/login', userLogin);
->>>>>>> Login data sent to database
 app.post('/', postSearchResults);
 app.post('/save', saveToDatabase);
 app.get('/savedCars', displaySavedCars);
@@ -62,11 +58,10 @@ app.get('/map', (req, res) => {
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 //TODO: ensure the username is the actual data being pulled
-function userLogin(req, res) {
+function checkUsernameWithDatabase(req, res) {
   const instruction = `INSERT INTO users (Username) VALUES($1) RETURNING id`;
   const value = [req.body.username];
   client.query(instruction, value).then(sqlRes => console.log('sqlRes :', sqlRes));
-
 }
 
 function getSearchPage(req, res) {
@@ -80,8 +75,8 @@ async function postSearchResults(req, res) {
   inputLocation = req.body.location;
   vehicleResultsArray = [];
   const clientCL = new craigslist.Client({
-    city: req.body.location
-  }),
+      city: req.body.location
+    }),
     options = {
       category: 'cta',
     };
