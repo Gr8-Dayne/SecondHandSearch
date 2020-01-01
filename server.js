@@ -14,6 +14,7 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodoverride('_method'));
 
+
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', error => console.error(error));
 client.connect();
@@ -27,6 +28,8 @@ function Vehicles(listing) {
   this.image = listing.images[0];
   this.url = listing.url;
 }
+
+
 
 app.get('/', getSearchPage);
 app.post('/', postSearchResults);
@@ -72,3 +75,4 @@ function saveDatatoDatabase(vehicleConst) {
 }
 
 app.listen(PORT, () => console.log(`App is running on ${PORT}`));
+
