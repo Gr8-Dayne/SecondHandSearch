@@ -18,6 +18,7 @@
         <img src="<%= vehicles[i].image %>" alt="image">
         <form action="/save" method="POST">
             <input type="hidden" name="title" value="<%= vehicles[i].title %>">
+            <input type="hidden" name="price" value="<%= vehicles[i].price %>">
             <input type="hidden" name="lat" value="<%= vehicles[i].lat %>">
             <input type="hidden" name="long" value="<%= vehicles[i].long %>">
             <input type="hidden" name="image" value="<%= vehicles[i].image %>">
