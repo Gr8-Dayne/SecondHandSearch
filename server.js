@@ -84,10 +84,18 @@ async function postSearchResults(req, res) {
 //     vehicleResultsArray.push(vehicleResult);
 
 
+
+
+
+
+
+
+
 function retrieveAndReturnSearchResults(req, res) {
-  superagent.get(`https://marketcheck-prod.apigee.net/v1/search?api_key=${MC_API_KEY}&year=${req.body.year}&make=${req.body.make}&city=${req.body.location}&radius=1000&sort_by=dist&sort_order=des`).then(marketcheckResponse => {
+  console.log('req.body :', req.body);
+  superagent.get(`https://marketcheck-prod.apigee.net/v1/sales?api_key=${MC_API_KEY}&ymm=${req.body.year}|${req.body.make}|${req.body.model}&city=${req.body.location}`).then(marketcheckResponse => {
     console.log(JSON.parse(marketcheckResponse.text));
-  });
+  })
 }
 
 
