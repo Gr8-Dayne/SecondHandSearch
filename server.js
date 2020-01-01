@@ -34,11 +34,12 @@ function Vehicles(listing) {
 app.get('/', getSearchPage);
 app.post('/', postSearchResults);
 app.post('/save', saveToDatabase);
-
-
 app.get('/contact', (req, res) => {
   res.render('contact');
 })
+
+//Route Error
+app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 function getSearchPage(req, res) {
   res.render('index');
@@ -73,12 +74,18 @@ function postSearchResults(req, res) {
 }
 
 
-function saveToDatabase (req, res) {
+function saveToDatabase(req, res) {
   const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL)
   VALUES ($1, $2, $3, $4, $5)`;
   let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url];
   client.query(instruction, values);
   res.status(204).send();
+}
+
+function errorHandler(error, response) {
+  response.render('pages/error', {
+    message: error
+  });
 }
 
 app.listen(PORT, () => console.log(`App is running on ${PORT}`));
