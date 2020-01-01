@@ -9,6 +9,7 @@ const pg = require('pg');
 const ejs = require('ejs');
 const methodoverride = require('method-override');
 const craigslist = require('node-craigslist');
+const MC_API_KEY = process.env.MC_API_KEY;
 
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
@@ -20,21 +21,21 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', error => console.error(error));
 client.connect();
 
-let vehicleResultsArray = [];
+
 
 function Vehicles(listing, price) {
   this.title = listing.title;
   this.price = price;
   this.lat = listing.mapUrl.slice(37, 45);
   this.long = listing.mapUrl.slice(47, 57);
-  this.image = listing.images[0];
-  this.url = listing.url;
+  this.image = listing.media.photo_links[0];
+  this.url = listing.vdp_url;
 }
 
 
 
 app.get('/', getSearchPage);
-app.post('/', postSearchResults);
+app.post('/', retrieveAndReturnSearchResults);
 app.post('/save', saveToDatabase);
 app.get('/savedCars', displaySavedCars);
 app.get('/contact', (req, res) => {
@@ -81,6 +82,13 @@ async function postSearchResults(req, res) {
 //   if(title.includes(`${make}`) && title.includes(`${model}`) && title.includes(`${req.body.year}`)){
 //     let vehicleResult = new Vehicles(detail);
 //     vehicleResultsArray.push(vehicleResult);
+
+
+function retrieveAndReturnSearchResults(req, res) {
+  superagent.get(`https://marketcheck-prod.apigee.net/v1/search?api_key=${MC_API_KEY}&year=${req.body.year}&make=${req.body.make}&city=${req.body.location}&radius=1000&sort_by=dist&sort_order=des`).then(marketcheckResponse => {
+    console.log(JSON.parse(marketcheckResponse.text));
+  });
+}
 
 
 function saveToDatabase(req, res) {
