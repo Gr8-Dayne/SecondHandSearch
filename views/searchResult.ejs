@@ -11,7 +11,6 @@
 
 <body>
     <%- include('partials/header') %>
-<<<<<<< HEAD
     <section id="allVehicles">
         <% for(let i = 0; i < vehicles.length; i++) { %>
         <a id="cards" href="<%= vehicles[i].url %>">
@@ -34,17 +33,6 @@
         </a>
     </section>
     <footer> &copy;SecondHandSearch Team </footer>
-=======
-    <%- include('partials/searchForm') %>
-    <section id="allVehicles">
-        <% for(let i = 0; i < 10; i++) { %>
-        <h2><%= vehicles[i].title%></h2>
-        <h3>price</h3>
-        <img src="<%= vehicles[i].image %>" alt="image">
-        <input type="checkbox" name="vehicle">
-        <% } %>
-    </section>
->>>>>>> userid is passed through login and search page
 </body>
 
 </html>
