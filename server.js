@@ -69,8 +69,13 @@ async function postSearchResults(req, res) {
     console.log(error)
   }
 }
-
-
+// clientCL.details(listing).then(detail => {
+//   let title = detail.title.toLowerCase();
+//   let make = req.body.make.toLowerCase();
+//   let model = req.body.model.toLowerCase();
+//   if(title.includes(`${make}`) && title.includes(`${model}`) && title.includes(`${req.body.year}`)){
+//     let vehicleResult = new Vehicles(detail);
+//     vehicleResultsArray.push(vehicleResult);
 
 function saveToDatabase(req, res) {
   const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL)
