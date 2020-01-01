@@ -33,6 +33,8 @@ function Vehicles(listing) {
 
 app.get('/', getSearchPage);
 app.post('/', postSearchResults);
+app.post('/save', saveToDatabase);
+
 
 app.get('/contact', (req, res) => {
   res.render('contact');
@@ -58,8 +60,8 @@ function postSearchResults(req, res) {
     .then((listings) =>
       listings.forEach(listing =>
         clientCL.details(listing).then(detail => {
+          console.log('detail', detail);
           let vehicleResult = new Vehicles(detail);
-          saveDatatoDatabase(vehicleResult);
           vehicleResultsArray.push(vehicleResult);
         })))
     .catch((err) => {
@@ -67,13 +69,16 @@ function postSearchResults(req, res) {
     });
   console.log(vehicleResultsArray);
   res.render('searchResult.ejs', { vehicles: vehicleResultsArray });
+  vehicleResultsArray = [];
 }
 
-function saveDatatoDatabase(vehicleConst) {
-  console.log('vehicleConst :', vehicleConst);
-  const instructions = `INSERT INTO vehicles (title, lat, long, image_URL, CL_URL) VALUES ($1, $2, $3, $4, $5)`;
-  const values = [vehicleConst.title, vehicleConst.lat, vehicleConst.long, vehicleConst.image, vehicleConst.url];
-  client.query(instructions, values);
+
+function saveToDatabase (req, res) {
+  const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL)
+  VALUES ($1, $2, $3, $4, $5)`;
+  let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url];
+  client.query(instruction, values);
+  res.status(204).send();
 }
 
 app.listen(PORT, () => console.log(`App is running on ${PORT}`));
