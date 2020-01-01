@@ -27,6 +27,10 @@ li{
   padding: 1vh;
 }
 
+td{
+  padding: 1vh;
+}
+
 #navbar{
   display: flex;
   flex-direction: row;
