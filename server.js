@@ -41,6 +41,9 @@ app.get('/contact', (req, res) => {
   res.render('contact');
 })
 
+//Route Error
+app.get('*', (request, response) => response.status(404).send('This route does not exist'));
+
 function getSearchPage(req, res) {
   res.render('index');
 }
@@ -48,8 +51,8 @@ function getSearchPage(req, res) {
 async function postSearchResults(req, res) {
   vehicleResultsArray = [];
   const clientCL = new craigslist.Client({
-    city: req.body.location
-  }),
+      city: req.body.location
+    }),
     options = {
       category: 'cta',
     };
@@ -61,15 +64,16 @@ async function postSearchResults(req, res) {
         let vehicleResult = new Vehicles(listingInfo, listings[i].price);
         vehicleResultsArray.push(vehicleResult);
       } catch (error) {
-        console.log(error)
+        errorHandler(error, res);
       }
     }
     console.log('vehicleResultsArray :', vehicleResultsArray);
     res.render('searchResult.ejs', { vehicles: vehicleResultsArray });
   } catch (error) {
-    console.log(error)
+    errorHandler(error, res);
   }
 }
+
 // clientCL.details(listing).then(detail => {
 //   let title = detail.title.toLowerCase();
 //   let make = req.body.make.toLowerCase();
@@ -78,18 +82,32 @@ async function postSearchResults(req, res) {
 //     let vehicleResult = new Vehicles(detail);
 //     vehicleResultsArray.push(vehicleResult);
 
+
 function saveToDatabase(req, res) {
   const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL)
   VALUES ($1, $2, $3, $4, $5)`;
   let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url];
-  client.query(instruction, values);
-  res.status(204).send();
+  try {
+    client.query(instruction, values);
+    res.status(204).send();
+  }
+  catch (error) {
+    errorHandler(error, res);
+  }
 }
 
 function displaySavedCars(req, res) {
   client.query(`SELECT * FROM vehicles;`).then(savedCars => {
-    res.render('savedCars.ejs', {vehicles: savedCars.rows});
+    res.render('savedCars.ejs', { vehicles: savedCars.rows });
+  }).catch(error => {
+    errorHandler(error, res);
   })
+}
+
+function errorHandler(error, response) {
+  response.render('error', {
+    message: error
+  });
 }
 
 app.listen(PORT, () => console.log(`App is running on ${PORT}`));
