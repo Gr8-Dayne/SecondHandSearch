@@ -92,18 +92,26 @@ async function postSearchResults(req, res) {
 
 async function saveToDatabase(req, res) {
   let marketValue = await retrieveAndReturnMarketPrice();
-  const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL, price, market_value)
+  const checkInstruction = `Select * FROM vehicles WHERE title = $1`;
+  const value = [req.body.title];
+  client.query(checkInstruction, value).then(sqlResult => {
+    if (sqlResult.rowCount > 0) {
+      console.log('The vehicle is already here');
+      res.status(204).send();
+    } else {
+      const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL, price, market_value)
   VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-  let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url, req.body.price, marketValue];
-  try {
-    client.query(instruction, values);
-    res.status(204).send();
-  }
-  catch (error) {
-    errorHandler(error, res);
-  }
+      let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url, req.body.price, marketValue];
+      try {
+        client.query(instruction, values);
+        res.status(204).send();
+      }
+      catch (error) {
+        errorHandler(error, res);
+      }
+    }
+  })
 }
-
 
 function retrieveAndReturnMarketPrice() {
   return new Promise((resolve, reject) => {
@@ -129,4 +137,3 @@ function errorHandler(error, response) {
 }
 
 app.listen(PORT, () => console.log(`App is running on ${PORT}`));
-
