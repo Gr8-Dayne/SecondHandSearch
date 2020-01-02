@@ -98,17 +98,19 @@ async function saveToDatabase(req, res) {
     if (sqlResult.rowCount > 0) {
       console.log('The vehicle is already here');
       res.status(204).send();
-    { else {
-  const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL, price, market_value)
+    } else {
+      const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL, price, market_value)
   VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-  let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url, req.body.price, marketValue];
-  try {
-    client.query(instruction, values);
-    res.status(204).send();
-  }
-  catch (error) {
-    errorHandler(error, res);
-  }
+      let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url, req.body.price, marketValue];
+      try {
+        client.query(instruction, values);
+        res.status(204).send();
+      }
+      catch (error) {
+        errorHandler(error, res);
+      }
+    }
+  })
 }
 
 function retrieveAndReturnMarketPrice() {
@@ -126,7 +128,8 @@ function displaySavedCars(req, res) {
   }).catch(error => {
     errorHandler(error, res);
   })
-  
+}
+
 function errorHandler(error, response) {
   response.render('error', {
     message: error
