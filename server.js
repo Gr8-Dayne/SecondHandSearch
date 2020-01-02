@@ -88,9 +88,7 @@ async function postSearchResults(req, res) {
 }
 
 async function saveToDatabase(req, res) {
-  console.log('req.body :', req.body);
   let marketValue = await retrieveAndReturnMarketPrice();
-  console.log(marketValue);
   const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL, price, market_value)
   VALUES ($1, $2, $3, $4, $5, $6, $7)`;
   let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url, req.body.price, marketValue];
