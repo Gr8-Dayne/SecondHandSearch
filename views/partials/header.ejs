@@ -3,10 +3,10 @@
 
 <header id="header1">
     <ul id="navbar">
-        <li><button onclick="displaySearch()">Search</button></li>
-        <li><a href="../savedCars">My Cars</a></li>
-        <li><a href="/"><h1>Second Hand Search</h1></a></li>
-        <li><a href="/">About</a></li>
+        <li><button id="searchButton" onclick="displaySearch()">Search</button></li>
+        <li><a href="savedCars">My Cars</a></li>
+        <li id="logo"><a href="/"><img src="../Images/YSOAB.png" alt="SecondHandSearch"></a></li>
+        <li><a href="aboutus">About</a></li>
         <li><a href="contact">Contact Us</a></li>
     </ul>
 </header>
@@ -15,7 +15,7 @@
     <form id="searchForm" action="/" method="POST">
         <fieldset>
             <ul>
-                <li><legend>Find your next money pit!</legend></li>
+                <li><legend id="moneyPit">Find your next money pit!</legend></li>
                 <li><label>
                     Location:
                     <input type="text" name="location">
@@ -32,7 +32,7 @@
                     Year:
                     <input type="text" name="year">
                 </label></li>
-                <li><input type="submit" name="submit" value="SEARCH"></li>
+                <li><input id="carSearchButton" type="submit" name="submit" value="SEARCH"></li>
             </ul>
         </fieldset>
     </form>

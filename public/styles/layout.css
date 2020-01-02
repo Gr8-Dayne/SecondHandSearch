@@ -1,0 +1,18 @@
+#allVehicles {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-weight: bold;
+    margin: 1%;
+}
+
+#cards {
+    width: 400px;
+    margin: 1%;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 1%;
+    box-shadow: 10px black;
+}
+
