@@ -93,9 +93,9 @@ body {
   margin-bottom: 100px;
 }
 
-#theTeamCards{
+/* #theTeamCards{
   margin: 10vmax;
-}
+} */
 
 #Phong{
   max-width: 70%;
@@ -133,7 +133,7 @@ footer{
   right: 0%;
   left: 0%;
   bottom: 0px;
-  position: relative;
+  position: fixed;
   text-align: center;
 }
 
@@ -185,7 +185,7 @@ footer{
   }
   
   body {
-    background-color: rgba(1, 138, 74, 0.651);
+    background-color: rgba(1, 138, 127, 0.651);
     left: 0;
     right: 0;
   }

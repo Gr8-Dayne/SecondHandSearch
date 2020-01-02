@@ -13,21 +13,22 @@
     <%- include('partials/header') %>
     <section id="allVehicles">
         <% for(let i = 0; i < vehicles.length; i++) { %>
-        <h2><%= vehicles[i].title %></h2>
-        <h3><%= vehicles[i].price %></h3>
-        <img src="<%= vehicles[i].image %>" alt="image">
-        <form action="/save" method="POST">
-            <input type="hidden" name="title" value="<%= vehicles[i].title %>">
-            <input type="hidden" name="price" value="<%= vehicles[i].price %>">
-            <input type="hidden" name="lat" value="<%= vehicles[i].lat %>">
-            <input type="hidden" name="long" value="<%= vehicles[i].long %>">
-            <input type="hidden" name="image" value="<%= vehicles[i].image %>">
-            <input type="hidden" name="url" value="<%= vehicles[i].url %>">
-            <input type="checkbox" name="vehicle" required>
-            <input type="submit" value="save">
-            <% if(i=== 9) {i = vehicles.length} %>
-        </form>
-        <% } %>
+        <a id="cards" href="<%= vehicles[i].url %>">
+            <h2 class="title"><%= vehicles[i].title %></h2>
+            <h3>Price</h3>
+            <img class="carImages" src="<%= vehicles[i].image %>" alt="image">
+            <form action="/save" method="POST">
+                <input type="hidden" name="title" value="<%= vehicles[i].title %>">
+                <input type="hidden" name="lat" value="<%= vehicles[i].lat %>">
+                <input type="hidden" name="long" value="<%= vehicles[i].long %>">
+                <input type="hidden" name="image" value="<%= vehicles[i].image %>">
+                <input type="hidden" name="url" value="<%= vehicles[i].url %>">
+                <input type="checkbox" name="vehicle" required>
+                <input type="submit" value="save">
+                <% if(i=== 9) {i = vehicles.length} %>
+            </form>
+            <% } %>
+        </a>
     </section>
     <footer> &copy;SecondHandSearch Team </footer>
 </body>
