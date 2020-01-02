@@ -1,26 +1,23 @@
 *{
-  /* display: inline-block; */
   color: black;
 }
 
 #header1{
   top: 0;
-  /* left: 0;
-  right: 0; */
   width: 100%;
   height: 8vh;
   text-align: center;
   background-color: grey;
 }
 
+#header1 :third-child{
+  margin: 200px;
+}
+
 #header2{
   height: 15vh;
   text-align: center;
   background-color: rgba(130, 130, 130, 0.596);
-  /* text-align: center; */
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* justify-content: space-around; */
 }
 
 li{
@@ -64,15 +61,6 @@ body {
 
 #searchForm{
   padding-top: 1vh;
-  /* display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: space-evenly; */
-/* 
-  display: flex;
-  justify-content: center;
-  vertical-align: center;
-  flex-direction: row; */
 }
 
 #carInstance{
@@ -89,7 +77,6 @@ footer{
 
 @media( min-width: 960px ) {
   *{
-    /* display: inline-block; */
     color: black;
   }
   
@@ -103,7 +90,6 @@ footer{
   }
   
   #header2{
-    /* text-align: center; */
     background-color: rgba(130, 130, 130, 0.596);
     height: 15vh;
     display: flex;
@@ -139,22 +125,8 @@ footer{
     right: 0;
   }
   
-  /* #login{
-    top: 0%;
-    bottom: 0%;
-  } */
-  
   #searchForm{
     padding-top: 1vh;
-    /* display: flex;
-    flex-direction: row;
-    text-align: center;
-    justify-content: space-evenly; */
-  /* 
-    display: flex;
-    justify-content: center;
-    vertical-align: center;
-    flex-direction: row; */
   }
   
   footer{
