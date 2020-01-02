@@ -36,6 +36,7 @@ function Vehicles(listing, price) {
 app.get('/', getSearchPage);
 app.post('/', postSearchResults);
 app.post('/save', saveToDatabase);
+app.get('/savedCars', displaySavedCars);
 app.get('/contact', (req, res) => {
   res.render('contact');
 })
@@ -83,6 +84,12 @@ function saveToDatabase(req, res) {
   let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url];
   client.query(instruction, values);
   res.status(204).send();
+}
+
+function displaySavedCars(req, res) {
+  client.query(`SELECT * FROM vehicles;`).then(savedCars => {
+    res.render('savedCars.ejs', {vehicles: savedCars.rows});
+  })
 }
 
 app.listen(PORT, () => console.log(`App is running on ${PORT}`));
