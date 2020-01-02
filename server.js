@@ -79,18 +79,27 @@ async function postSearchResults(req, res) {
 //     vehicleResultsArray.push(vehicleResult);
 
 function saveToDatabase(req, res) {
-  const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL)
+  const checkInstruction = `Select * FROM vehicles WHERE title = $1`;
+  const value = [req.body.title];
+  client.query(checkInstruction, value).then(sqlResult => {
+    if (sqlResult.rowCount > 0) {
+      console.log('The vehicle is already here');
+      res.status(204).send();
+    } else {
+      const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL)
   VALUES ($1, $2, $3, $4, $5)`;
-  let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url];
-  client.query(instruction, values);
-  res.status(204).send();
-}
-
-function displaySavedCars(req, res) {
-  client.query(`SELECT * FROM vehicles;`).then(savedCars => {
-    res.render('savedCars.ejs', {vehicles: savedCars.rows});
+      let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url];
+      client.query(instruction, values);
+      res.status(204).send();
+    }
   })
-}
 
-app.listen(PORT, () => console.log(`App is running on ${PORT}`));
+
+  function displaySavedCars(req, res) {
+    client.query(`SELECT * FROM vehicles;`).then(savedCars => {
+      res.render('savedCars.ejs', { vehicles: savedCars.rows });
+    })
+  }
+
+  app.listen(PORT, () => console.log(`App is running on ${PORT}`));
 
