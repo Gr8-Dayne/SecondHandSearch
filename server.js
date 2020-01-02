@@ -52,8 +52,8 @@ function getSearchPage(req, res) {
 async function postSearchResults(req, res) {
   vehicleResultsArray = [];
   const clientCL = new craigslist.Client({
-      city: req.body.location
-    }),
+    city: req.body.location
+  }),
     options = {
       category: 'cta',
     };
@@ -94,7 +94,8 @@ async function postSearchResults(req, res) {
 function retrieveAndReturnSearchResults(req, res) {
   console.log('req.body :', req.body);
   superagent.get(`https://marketcheck-prod.apigee.net/v1/sales?api_key=${MC_API_KEY}&ymm=${req.body.year}|${req.body.make}|${req.body.model}&city=${req.body.location}`).then(marketcheckResponse => {
-    console.log(JSON.parse(marketcheckResponse.text));
+    const data = JSON.parse(marketcheckResponse.text);
+    console.log('data.price_stats :', data.price_stats);
   })
 }
 
