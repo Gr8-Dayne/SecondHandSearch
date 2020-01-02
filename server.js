@@ -36,6 +36,7 @@ function Vehicles(listing, price) {
 app.get('/', getSearchPage);
 app.post('/', postSearchResults);
 app.post('/save', saveToDatabase);
+app.get('/savedCars', displaySavedCars);
 app.get('/contact', (req, res) => {
   res.render('contact');
 })
@@ -73,12 +74,27 @@ async function postSearchResults(req, res) {
   }
 }
 
+// clientCL.details(listing).then(detail => {
+//   let title = detail.title.toLowerCase();
+//   let make = req.body.make.toLowerCase();
+//   let model = req.body.model.toLowerCase();
+//   if(title.includes(`${make}`) && title.includes(`${model}`) && title.includes(`${req.body.year}`)){
+//     let vehicleResult = new Vehicles(detail);
+//     vehicleResultsArray.push(vehicleResult);
+
+
 function saveToDatabase(req, res) {
   const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL)
   VALUES ($1, $2, $3, $4, $5)`;
   let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url];
   client.query(instruction, values);
   res.status(204).send();
+}
+
+function displaySavedCars(req, res) {
+  client.query(`SELECT * FROM vehicles;`).then(savedCars => {
+    res.render('savedCars.ejs', {vehicles: savedCars.rows});
+  })
 }
 
 function errorHandler(error, response) {
