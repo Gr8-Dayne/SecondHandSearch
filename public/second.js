@@ -59,10 +59,9 @@ function onLocationFound(e) { //this function does three things if the location 
   L.marker(e.latlng).addTo(map)
     .bindPopup("Your location is within" + radius + " meters of this point");
 
- 
+$.get('test').then(a => console.log(a))
 
-  L.marker([e.latlng], {icon: secondHandIcon}).addTo(map)
-    .bindPopup("Data to Follow");
+  //L.marker([postSearchResults.vehicleResultsArray.lat, postSearchResults.vehicleResultsArray.long ], {icon: secondHandIcon}).addTo(map)
 }
 
 function onLocationError(e) {

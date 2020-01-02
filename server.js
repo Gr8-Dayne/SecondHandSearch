@@ -40,7 +40,12 @@ app.get('/savedCars', displaySavedCars);
 app.get('/contact', (req, res) => {
   res.render('contact');
 })
-
+app.get('/', (req, res) => { //todo get data from database (VARCHAR??)
+  res.send([1,2,3])
+})
+app.get('/map', (req, res)=> {
+  res.render('second.ejs')
+})
 //Route Error
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
