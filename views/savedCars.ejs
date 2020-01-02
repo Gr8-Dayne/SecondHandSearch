@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/ultimate.css">
+    <title>Saved Cars</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <section id="allVehicles">
+        <% for(let i = 0; i < vehicles.length; i++) { %>
+        <h2><%= vehicles[i].title %></h2>
+        <h3><%= vehicles[i].price %></h3>
+        <img src="<%= vehicles[i].image_url %>" alt="image">
+        <% } %>
+    </section>
+</body>
+</html>
