@@ -25,7 +25,7 @@
                 <input type="hidden" name="image" value="<%= vehicles[i].image %>">
                 <input type="hidden" name="url" value="<%= vehicles[i].url %>">
                 <input type="checkbox" name="vehicle" required>
-                <input type="submit" value="save">
+                <input class="saveButton" type="submit" value="save">
                 <% if(i=== 9) {i = vehicles.length} %>
             </form>
             <% } %>

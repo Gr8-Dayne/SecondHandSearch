@@ -8,3 +8,29 @@
     width: 400px;
     height: 350px;
 }
+
+.contactButtons{
+    background-color: black;
+    color: white;
+}
+
+.saveButton{
+    background-color: rgb(0, 0, 0);
+    color: red;
+}
+
+#searchButton{
+    background-color: rgba(0, 0, 0, 0.747);
+    color: hotpink;
+}
+
+#moneyPit{
+  text-decoration: underline;
+  text-shadow: 1px 1px rgba(56, 56, 56, 0.685);
+}
+
+#carSearchButton{
+  background-color: rgba(0, 0, 0, 0.747);
+  color: hotpink;
+}
+
