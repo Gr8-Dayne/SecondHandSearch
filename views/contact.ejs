@@ -13,15 +13,15 @@
   <!-- Main page/form to search cars and button to view saved cars -->
   <%- include('partials/header') %>
 
-  <form action="mailto:dalexad@gmail.com" method="post" enctype="text/plain">
+  <form id="emailTeam" action="mailto:dalexad@gmail.com" method="post" enctype="text/plain">
     Name:<br>
     <input type="text" name="name"><br>
     E-mail:<br>
     <input type="text" name="mail"><br>
-    Comment:<br>
-    <input type="text" name="comment" size="250"><br><br>
-    <input type="submit" value="Send">
-    <input type="reset" value="Reset">
+    Message:<br>
+    <input id="emailMessageBlock" type="text" name="message" size="250"><br><br>
+    <input class="contactButtons" type="submit" value="Send">
+    <input class="contactButtons" type="reset" value="Reset">
   </form>
 
   <footer> &copy;SecondHandSearch Team </footer>

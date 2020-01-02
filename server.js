@@ -35,6 +35,10 @@ app.get('/contact', (req, res) => {
   res.render('contact');
 })
 
+app.get('/aboutus', (req, res) => {
+  res.render('aboutus');
+})
+
 function getSearchPage(req, res) {
   res.render('index');
 }
