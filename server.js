@@ -45,6 +45,9 @@ app.get('/savedCars', displaySavedCars);
 app.get('/contact', (req, res) => {
   res.render('contact');
 })
+app.get('/aboutus', (req, res) => {
+  res.render('aboutus');
+})
 
 //Route Error
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
