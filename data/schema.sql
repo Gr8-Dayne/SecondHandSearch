@@ -31,6 +31,7 @@ INSERT INTO
     long,
     image_URL,
     CL_URL,
+    price,
     market_value,
     userID
   )
@@ -60,6 +61,7 @@ INSERT INTO
     long,
     image_URL,
     CL_URL,
+    price,
     market_value,
     userID
   )
@@ -89,6 +91,7 @@ INSERT INTO
     long,
     image_URL,
     CL_URL,
+    price,
     market_value,
     userID
   )
@@ -123,6 +126,7 @@ INSERT INTO
     long,
     image_URL,
     CL_URL,
+    price,
     market_value,
     userID
   )
@@ -152,6 +156,7 @@ INSERT INTO
     long,
     image_URL,
     CL_URL,
+    price,
     market_value,
     userID
   )
@@ -181,6 +186,7 @@ INSERT INTO
     long,
     image_URL,
     CL_URL,
+    price,
     market_value,
     userID
   )
