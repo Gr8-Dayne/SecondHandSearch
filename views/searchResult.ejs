@@ -15,7 +15,7 @@
         <% for(let i = 0; i < vehicles.length; i++) { %>
         <a id="cards" href="<%= vehicles[i].url %>">
             <h2 class="title"><%= vehicles[i].title %></h2>
-            <h3><%= vehicles[i].price %></h3>
+            <h3 class="listingPrice">Listing Price: <%= vehicles[i].price %></h3>
             <img class="carImages" src="<%= vehicles[i].image %>" alt="image">
             <form action="/save" method="POST">
                 <input type="hidden" name="title" value="<%= vehicles[i].title %>">
@@ -24,8 +24,8 @@
                 <input type="hidden" name="long" value="<%= vehicles[i].long %>">
                 <input type="hidden" name="image" value="<%= vehicles[i].image %>">
                 <input type="hidden" name="url" value="<%= vehicles[i].url %>">
-                <input type="checkbox" name="vehicle" required>
-                <input type="submit" value="save">
+                <input class="checkbox" type="checkbox" name="vehicle" required>
+                <input class="save" type="submit" value="save">
                 <% if(i=== 9) {i = vehicles.length} %>
             </form>
             <% } %>

@@ -1,5 +1,5 @@
 .title {
-    font-size: 1.3em;
+    font-size: 1.8em;
     font-weight: bolder;
     height: 80px;
 }
@@ -8,3 +8,14 @@
     width: 400px;
     height: 350px;
 }
+
+.listingPrice, .marketPrice, .remove, .save, .checkbox{
+    font-size: 1.3em;
+    margin: 2%;
+}
+
+.remove, .save {
+    background-color: black;
+    color: white;
+}
+
