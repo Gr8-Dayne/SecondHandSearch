@@ -1,3 +1,5 @@
+'use strict';
+
 var attr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
       'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -15,6 +17,7 @@ var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terr
 var map = L.map('map', {
   zoomSnap: 5.0,
   layers:[Stamen_Terrain]}).fitWorld();
+
 
 function infoFunction() {
   alert('This application would like to know your current location in order to show which vehicles are closer to you.');
@@ -43,6 +46,7 @@ function onLocationFound(e) { //this function does three things if the location 
 
   var radius = e.accuracy / 10; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
 
+  var radius = e.accuracy / 2; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
 
   var r= radius.toFixed(2);
   var coordinates = e.latlng.lat + ", " + e.latlng.lng;
@@ -54,15 +58,14 @@ function onLocationFound(e) { //this function does three things if the location 
     shadowAnchor: [22, 94]
   });
 
-  // input from CG to go here.....
+// input from CG to go here.....
+
 
   L.marker(e.latlng).addTo(map)
     .bindPopup("Your location is within" + radius + " meters of this point");
 
- 
+  L.marker([vehicles[i].lat, vehicles[i].long], {icon: secondHandIcon}).addTo(map)
 
-  L.marker([e.latlng], {icon: secondHandIcon}).addTo(map)
-    .bindPopup("Data to Follow");
 }
 
 function onLocationError(e) {
@@ -82,4 +85,5 @@ map.locate({
   timeout: 15000, // this option specifies when the browser will stop attempting to get a fix on the device's location. Units are miliseconds.
   watch: false, // you can set this option from false to true to track a user's movement over time instead of just once.
 });
+
 
