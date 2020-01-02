@@ -1,26 +1,36 @@
 *{
-  /* display: inline-block; */
   color: black;
 }
 
 #header1{
   top: 0;
-  /* left: 0;
-  right: 0; */
   width: 100%;
-  height: 8vh;
+  height: 10vh;
   text-align: center;
   background-color: grey;
+}
+
+#searchButton{
+  background-color: rgba(255, 251, 0, 0.747);
+}
+
+#logo{
+  margin-top: -13px;
 }
 
 #header2{
   height: 15vh;
   text-align: center;
   background-color: rgba(130, 130, 130, 0.596);
-  /* text-align: center; */
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* justify-content: space-around; */
+}
+
+#moneyPit{
+  text-decoration: underline;
+  text-shadow: 1px 1px rgba(56, 56, 56, 0.685);
+}
+
+#carSearchButton{
+  background-color: rgba(255, 251, 0, 0.747);
 }
 
 li{
@@ -52,7 +62,7 @@ main{
 }
 
 body {
-  background-color: rgba(1, 138, 74, 0.651);
+  background-color: rgba(1, 138, 127, 0.651);
   left: 0;
   right: 0;
 }
@@ -64,46 +74,87 @@ body {
 
 #searchForm{
   padding-top: 1vh;
-  /* display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: space-evenly; */
-/* 
-  display: flex;
-  justify-content: center;
-  vertical-align: center;
-  flex-direction: row; */
 }
 
 #carInstance{
   width: 100%;
 }
 
+#aboutUsTitle{
+  text-align: center;
+  text-decoration: underline;
+  margin: 10vw;
+  font-size: 40px;
+  text-shadow: 3px 2px rgba(56, 56, 56, 0.685);
+}
+
+#theTeam{
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+#theTeamCards{
+  margin: 10vmax;
+}
+
+#Phong{
+  max-width: 70%;
+  padding: 10vmax;
+}
+
+#Greg{
+  max-width: 70%;
+  padding: 10vmax;
+}
+
+#Jitendra{
+  max-width: 70%;
+  padding: 10vmax;
+}
+
+#Dayne{
+  max-width: 70%;
+  padding: 10vmax;
+}
+
+#emailTeam{
+  text-align: center;
+}
+
+#emailMessageBlock{
+  width: 70%;
+}
+
+.contactButtons{
+  background-color: rgba(255, 251, 0, 0.747);
+}
+
 footer{
   right: 0%;
   left: 0%;
   bottom: 0px;
-  position: fixed;
+  position: relative;
   text-align: center;
 }
 
 @media( min-width: 960px ) {
   *{
-    /* display: inline-block; */
     color: black;
   }
   
   #header1{
     top: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
     height: 10vh;
     text-align: center;
     background-color: rgb(255, 255, 255);
   }
   
+  #logo{
+    margin-top: -15px;
+  }
+  
   #header2{
-    /* text-align: center; */
     background-color: rgba(130, 130, 130, 0.596);
     height: 15vh;
     display: flex;
@@ -134,34 +185,20 @@ footer{
   }
   
   body {
-    background-color: rgba(1, 138, 74, 0.651);
+    background-color: rgba(1, 138, 127, 0.651);
     left: 0;
     right: 0;
   }
   
-  /* #login{
-    top: 0%;
-    bottom: 0%;
-  } */
-  
   #searchForm{
     padding-top: 1vh;
-    /* display: flex;
-    flex-direction: row;
-    text-align: center;
-    justify-content: space-evenly; */
-  /* 
-    display: flex;
-    justify-content: center;
-    vertical-align: center;
-    flex-direction: row; */
   }
   
   footer{
     right: 0%;
     left: 0%;
     bottom: 0px;
-    position: fixed;
+    position: relative;
     text-align: center;
   }
 }
