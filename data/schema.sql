@@ -42,6 +42,7 @@ VALUES
     'https://cdn.bringatrailer.com/wp-content/uploads/2018/08/2003_bmw_m3_coupe_15360831063b2253e7Screen-Shot-2018-09-04-at-10.43.10-AM-940x636.png',
     'https://seattle.craigslist.org/search/sss?query=BMW+M3&excats=122-41&sort=rel',
     '35474732',
+    '3547',
     (
       SELECT
         ID
@@ -69,6 +70,7 @@ VALUES
     '30.5234',
     'https://i.pinimg.com/originals/2b/7d/bc/2b7dbc791cbda8a670e80abaeffea9ea.jpg',
     'https://seattle.craigslist.org/search/sss?query=lada&sort=rel',
+    '234561',
     '234561',
     (
       SELECT
@@ -98,6 +100,7 @@ VALUES
     'https://i.pinimg.com/originals/19/a8/6c/19a86c8abef148ebe0bfad0fb49f57be.jpg',
     'https://seattle.craigslist.org/search/sss?query=BMW%20M4&sort=rel',
     '1234567',
+    '234561',
     (
       SELECT
         ID
@@ -131,6 +134,7 @@ VALUES
     'https://cdn.bringatrailer.com/wp-content/uploads/2018/08/2003_bmw_m3_coupe_15360831063b2253e7Screen-Shot-2018-09-04-at-10.43.10-AM-940x636.png',
     'https://seattle.craigslist.org/search/sss?query=BMW+M3&excats=122-41&sort=rel',
     '098765',
+    '234561',
     (
       SELECT
         ID
@@ -159,6 +163,7 @@ VALUES
     'https://i.pinimg.com/originals/2b/7d/bc/2b7dbc791cbda8a670e80abaeffea9ea.jpg',
     'https://seattle.craigslist.org/search/sss?query=lada&sort=rel',
     '234567',
+    '234561',
     (
       SELECT
         ID
@@ -187,6 +192,7 @@ VALUES
     'https://i.pinimg.com/originals/19/a8/6c/19a86c8abef148ebe0bfad0fb49f57be.jpg',
     'https://seattle.craigslist.org/search/sss?query=BMW%20M4&sort=rel',
     '56789',
+    '234561',
     (
       SELECT
         ID
