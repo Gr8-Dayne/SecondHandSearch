@@ -17,6 +17,8 @@
         <h3><%= vehicles[i].price %></h3>
         <h3><%= vehicles[i].market_value %></h3>
         <img src="<%= vehicles[i].image_url %>" alt="image">
+        <a href="/map?lat=<%= vehicles[i].lat %>&long=<%= vehicles[i].long %>">
+        Lookup Map</a>
         <% } %>
     </section>
 </body>
