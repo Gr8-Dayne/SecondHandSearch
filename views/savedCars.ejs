@@ -13,11 +13,16 @@
     <%- include('partials/header') %>
     <section id="allVehicles">
         <% for(let i = 0; i < vehicles.length; i++) { %>
-        <h2><%= vehicles[i].title %></h2>
-        <h3><%= vehicles[i].price %></h3>
-        <h3><%= vehicles[i].market_value %></h3>
-        <img src="<%= vehicles[i].image_url %>" alt="image">
-        <% } %>
+        <a id="cards" href="<%= vehicles[i].url %>">
+            <h2><%= vehicles[i].title %></h2>
+            <h3><%= vehicles[i].price %></h3>
+            <h3><%= vehicles[i].market_value %></h3>
+            <img class="carImages" src="<%= vehicles[i].image_url %>" alt="image">
+            <form action="/savedCars/<%= vehicles[i].id %>?_method=DELETE" method="POST">
+                <input type="submit" name="remove" value="REMOVE" id="">
+            </form>
+            <% } %>
+        </a>
     </section>
 </body>
 
