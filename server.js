@@ -35,7 +35,7 @@ function Vehicles(listing, price) {
 
 
 app.get('/', getSearchPage);
-app.post('/', retrieveAndReturnSearchResults);
+app.post('/', postSearchResults);
 app.post('/save', saveToDatabase);
 app.get('/savedCars', displaySavedCars);
 app.get('/contact', (req, res) => {
@@ -68,7 +68,6 @@ async function postSearchResults(req, res) {
         errorHandler(error, res);
       }
     }
-    console.log('vehicleResultsArray :', vehicleResultsArray);
     res.render('searchResult.ejs', { vehicles: vehicleResultsArray });
   } catch (error) {
     errorHandler(error, res);
@@ -91,11 +90,11 @@ async function postSearchResults(req, res) {
 
 
 
-function retrieveAndReturnSearchResults(req, res) {
+function retrieveAndReturnSearchResults(req) {
   console.log('req.body :', req.body);
   superagent.get(`https://marketcheck-prod.apigee.net/v1/sales?api_key=${MC_API_KEY}&ymm=${req.body.year}|${req.body.make}|${req.body.model}&city=${req.body.location}`).then(marketcheckResponse => {
     const data = JSON.parse(marketcheckResponse.text);
-    console.log('data.price_stats :', data.price_stats);
+    return data.price_stats.mean;
   })
 }
 
