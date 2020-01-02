@@ -14,6 +14,9 @@
         <h2><%= vehicles[i].title %></h2>
         <h3><%= vehicles[i].price %></h3>
         <img src="<%= vehicles[i].image_url %>" alt="image">
+        <form action="/savedCars/<%= vehicles[i].id %>?_method=DELETE" method="POST">
+            <input type="submit" name="remove" value="REMOVE" id="">
+        </form>
         <% } %>
     </section>
 </body>

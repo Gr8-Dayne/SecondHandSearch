@@ -37,6 +37,7 @@ app.get('/', getSearchPage);
 app.post('/', postSearchResults);
 app.post('/save', saveToDatabase);
 app.get('/savedCars', displaySavedCars);
+app.delete('/savedCars/:id', deleteCar);
 app.get('/contact', (req, res) => {
   res.render('contact');
 })
@@ -89,6 +90,12 @@ function saveToDatabase(req, res) {
 function displaySavedCars(req, res) {
   client.query(`SELECT * FROM vehicles;`).then(savedCars => {
     res.render('savedCars.ejs', {vehicles: savedCars.rows});
+  })
+}
+
+function deleteCar (req, res) {
+  client.query(`DELETE from vehicles WHERE id=$1;`, [req.params.id]).then(() => {
+    res.redirect('/savedCars');
   })
 }
 
