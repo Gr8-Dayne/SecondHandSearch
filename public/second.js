@@ -62,7 +62,9 @@ function onLocationFound(e) { //this function does three things if the location 
 $.get('/map').then(a => console.log(a))
 
 
-  //L.marker([.lat, .long ], {icon: secondHandIcon}).addTo(map)
+
+
+  L.marker([.lat, .long ], {icon: secondHandIcon}).addTo(map)
 }
 
 function onLocationError(e) {
