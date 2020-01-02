@@ -21,15 +21,19 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', error => console.error(error));
 client.connect();
 
-
+let vehicleResultsArray = [];
+let inputMake;
+let inputModel;
+let inputYear;
+let inputLocation;
 
 function Vehicles(listing, price) {
   this.title = listing.title;
   this.price = price;
   this.lat = listing.mapUrl.slice(37, 45);
   this.long = listing.mapUrl.slice(47, 57);
-  this.image = listing.media.photo_links[0];
-  this.url = listing.vdp_url;
+  this.image = listing.images[0];
+  this.url = listing.url;
 }
 
 
@@ -50,59 +54,45 @@ function getSearchPage(req, res) {
 }
 
 async function postSearchResults(req, res) {
+  inputMake = req.body.make;
+  inputModel = req.body.model;
+  inputYear = req.body.year;
+  inputLocation = req.body.location;
   vehicleResultsArray = [];
   const clientCL = new craigslist.Client({
-    city: req.body.location
-  }),
+      city: req.body.location
+    }),
     options = {
       category: 'cta',
     };
   try {
     let listings = await clientCL.search(options, `${req.body.year} ${req.body.make} ${req.body.model}`)
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
       try {
         let listingInfo = await clientCL.details(listings[i])
-        let vehicleResult = new Vehicles(listingInfo, listings[i].price);
-        vehicleResultsArray.push(vehicleResult);
+        let title = listingInfo.title.toLowerCase();
+        let make = req.body.make.toLowerCase();
+        let model = req.body.model.toLowerCase();
+        if (title.includes(`${make}`) && title.includes(`${model}`)) {
+          let vehicleResult = new Vehicles(listingInfo, listings[i].price);
+          vehicleResultsArray.push(vehicleResult);
+        }
       } catch (error) {
         errorHandler(error, res);
       }
     }
-    res.render('searchResult.ejs', { vehicles: vehicleResultsArray });
+    res.render('searchResult', { vehicles: vehicleResultsArray });
   } catch (error) {
     errorHandler(error, res);
   }
 }
 
-// clientCL.details(listing).then(detail => {
-//   let title = detail.title.toLowerCase();
-//   let make = req.body.make.toLowerCase();
-//   let model = req.body.model.toLowerCase();
-//   if(title.includes(`${make}`) && title.includes(`${model}`) && title.includes(`${req.body.year}`)){
-//     let vehicleResult = new Vehicles(detail);
-//     vehicleResultsArray.push(vehicleResult);
-
-
-
-
-
-
-
-
-
-function retrieveAndReturnSearchResults(req) {
-  console.log('req.body :', req.body);
-  superagent.get(`https://marketcheck-prod.apigee.net/v1/sales?api_key=${MC_API_KEY}&ymm=${req.body.year}|${req.body.make}|${req.body.model}&city=${req.body.location}`).then(marketcheckResponse => {
-    const data = JSON.parse(marketcheckResponse.text);
-    return data.price_stats.mean;
-  })
-}
-
-
-function saveToDatabase(req, res) {
-  const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL)
-  VALUES ($1, $2, $3, $4, $5)`;
-  let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url];
+async function saveToDatabase(req, res) {
+  let marketValue = await retrieveAndReturnMarketPrice();
+  console.log(marketValue);
+  const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL, market_value)
+  VALUES ($1, $2, $3, $4, $5, $6)`;
+  let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url, marketValue];
   try {
     client.query(instruction, values);
     res.status(204).send();
@@ -110,6 +100,16 @@ function saveToDatabase(req, res) {
   catch (error) {
     errorHandler(error, res);
   }
+}
+
+
+function retrieveAndReturnMarketPrice() {
+  return new Promise((resolve, reject) => {
+    superagent.get(`https://marketcheck-prod.apigee.net/v1/sales?api_key=${MC_API_KEY}&ymm=${inputYear}|${inputMake}|${inputModel}&city=${inputLocation}`).then(marketcheckResponse => {
+      const data = JSON.parse(marketcheckResponse.text);
+      resolve(data.price_stats.mean)
+    })
+  })
 }
 
 function displaySavedCars(req, res) {
