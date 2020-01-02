@@ -9,7 +9,7 @@
 </header>
 
 <header id="header2" style="display: none;">
-    <form id="searchForm" action="/searchresult/:<%= userId[0].id %>" method="POST">
+    <form id="searchForm" action="/searchresult" method="POST">
         <fieldset>
             <ul>
                 <li>
@@ -33,6 +33,7 @@
                         Year:
                         <input type="text" name="year">
                     </label></li>
+                <input type="hidden" name="userId" value="<%= userId[0].id %>">
                 <li><input id="carSearchButton" type="submit" name="submit" value="SEARCH"></li>
             </ul>
         </fieldset>
