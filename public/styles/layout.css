@@ -1,3 +1,13 @@
+#navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: center;
+    padding: 2vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
 #allVehicles {
     display: flex;
     flex-direction: row;
@@ -16,4 +26,156 @@
     box-shadow: 10px black;
 }
 
+#header1{
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+    background-color: grey;
+}
+  
+#logo{
+margin-top: -13px;
+}
+
+#header2{
+height: 15vh;
+text-align: center;
+background-color: rgba(130, 130, 130, 0.596);
+}
+
+li{
+  padding: 1vh;
+}
+
+td{
+  padding: 1vh;
+}
+
+#searchForm{
+  padding-top: 1vh;
+}
+
+#carInstance{
+  width: 100%;
+}
+
+#aboutUsTitle{
+  text-align: center;
+  text-decoration: underline;
+  margin: 10vw;
+  font-size: 40px;
+  text-shadow: 3px 2px rgba(56, 56, 56, 0.685);
+}
+
+#theTeam{
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+#theTeamCards{
+  margin: 10vmax;
+}
+
+#Phong{
+  max-width: 70%;
+  padding: 10vmax;
+}
+
+#Greg{
+  max-width: 70%;
+  padding: 10vmax;
+}
+
+#Jitendra{
+  max-width: 70%;
+  padding: 10vmax;
+}
+
+#Dayne{
+  max-width: 70%;
+  padding: 10vmax;
+}
+
+#emailTeam{
+  text-align: center;
+}
+
+#emailMessageBlock{
+  width: 70%;
+}
+
+footer{
+  right: 0%;
+  left: 0%;
+  bottom: 0px;
+  position: relative;
+  text-align: center;
+}
+
+@media( min-width: 960px ) {
+    *{
+    color: black;
+  }
+  
+  #header1{
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  #logo{
+    margin-top: -15px;
+  }
+  
+  #header2{
+    background-color: rgba(130, 130, 130, 0.596);
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-around;
+    display: none;
+  }
+  
+  #navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: center;
+    padding-top: 2.3vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+  
+  h1{
+    text-align: center;
+  }
+  
+  main{
+    text-align: center;
+    top: 0%;
+    bottom: 0%;
+  }
+  
+  body {
+    background-color: rgba(1, 138, 127, 0.651);
+    left: 0;
+    right: 0;
+  }
+  
+  #searchForm{
+    padding-top: 1vh;
+  }
+  
+  footer{
+    right: 0%;
+    left: 0%;
+    bottom: 0px;
+    position: relative;
+    text-align: center;
+  }
+}
 
