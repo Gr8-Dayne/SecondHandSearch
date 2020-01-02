@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS vehicles (
   long VARCHAR(255),
   image_URL VARCHAR(255),
   CL_URL VARCHAR(255),
+  price VARCHAR(255),
   market_value NUMERIC,
   userID INT,
   FOREIGN KEY (userID) REFERENCES users(ID)
