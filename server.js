@@ -42,15 +42,16 @@ app.get('/', getSearchPage);
 app.post('/', postSearchResults);
 app.post('/save', saveToDatabase);
 app.get('/savedCars', displaySavedCars);
+app.delete('/savedCars/:id', deleteCar);
 app.get('/contact', (req, res) => {
   res.render('contact');
-})
-
+});
 app.get('/aboutus', (req, res) => {
   res.render('aboutus');
-})
-
-
+});
+app.get('/map', (req, res) => {
+  res.render('second.ejs')
+});
 //Route Error
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
@@ -129,6 +130,12 @@ function displaySavedCars(req, res) {
     res.render('savedCars.ejs', { vehicles: savedCars.rows });
   }).catch(error => {
     errorHandler(error, res);
+  })
+}
+
+function deleteCar(req, res) {
+  client.query(`DELETE from vehicles WHERE id=$1;`, [req.params.id]).then(() => {
+    res.redirect('/savedCars');
   })
 }
 
