@@ -18,3 +18,4 @@ CREATE TABLE IF NOT EXISTS vehicles (
   userID INT,
   FOREIGN KEY (userID) REFERENCES users(ID)
 );
+
