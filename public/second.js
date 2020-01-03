@@ -1,3 +1,5 @@
+
+
 var attr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
   '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -13,7 +15,7 @@ var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terr
 });
 
 var map = L.map('map', {
-  zoomSnap: 5.0,
+  zoomSnap: 10,
   layers: [Stamen_Terrain]
 }).fitWorld();
 
@@ -25,7 +27,7 @@ function locateFunction() {
   if (navigator.geolocation) {
     navigator.geolocation.showPosition(showPosition);
     map.setView({
-      setView: true,
+      setView: false,
       maxZoom: 16,
       timeout: 15000,
       watch: false,
