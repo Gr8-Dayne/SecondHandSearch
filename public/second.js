@@ -1,3 +1,5 @@
+
+
 var attr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
   '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -8,14 +10,13 @@ var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terr
   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   subdomains: 'abcd',
   minZoom: 0,
-  maxZoom: 18,
+  maxZoom: 50,
   ext: 'png'
 });
 
 var map = L.map('map', {
-  zoomSnap: 5.0,
-  layers: [Stamen_Terrain]
-}).fitWorld();
+  zoomSnap: 10,
+  layers:[Stamen_Terrain]}).fitWorld();
 
 function infoFunction() {
   alert('This application would like to know your current location in order to show which vehicles are closer to you.');
@@ -25,8 +26,8 @@ function locateFunction() {
   if (navigator.geolocation) {
     navigator.geolocation.showPosition(showPosition);
     map.setView({
-      setView: true,
-      maxZoom: 16,
+      setView: false,
+      maxZoom: 50,
       timeout: 15000,
       watch: false,
     })
@@ -83,7 +84,7 @@ map.on('locationerror', onLocationError);
 //This specifies that the locate method should run
 map.locate({
   setView: true, //this option centers the map on location and zooms
-  maxZoom: 14, // this option prevents the map from zooming further than 16, maintaining some spatial context even if the accuracy of the location reading allows for closer zoom
+  maxZoom: 50, // this option prevents the map from zooming further than 16, maintaining some spatial context even if the accuracy of the location reading allows for closer zoom
   timeout: 15000, // this option specifies when the browser will stop attempting to get a fix on the device's location. Units are miliseconds.
   watch: false, // you can set this option from false to true to track a user's movement over time instead of just once.
 });
