@@ -102,7 +102,7 @@ async function postSearchResults(req, res) {
         let title = listingInfo.title.toLowerCase();
         let make = req.body.make.toLowerCase();
         let model = req.body.model.toLowerCase();
-        if (title.includes(`${make}`) && title.includes(`${model}`)) {
+        if (title.includes(`${make}`) && title.includes(`${model}`) && listings[i].price !== '$0') {
           let vehicleResult = new Vehicles(listingInfo, listings[i].price);
           vehicleResultsArray.push(vehicleResult);
         }
