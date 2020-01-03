@@ -33,7 +33,7 @@
 }
 
 #navbar li {
-    font-size: 2em;
+    font-size: 1em;
 }
 
 .saveButton{
@@ -44,9 +44,7 @@
 #searchButton{
     background-color: rgba(0, 0, 0, 0.747);
     color: hotpink;
-    width: 10vw;
-    height: 6vh;
-
+    height: 4vh;
 }
 
 #moneyPit{
@@ -59,3 +57,26 @@
   color: hotpink;
 }
 
+.contactButtons{
+    background-color: rgb(0, 0, 0);
+    color: yellow;
+}
+
+#hooner {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+#hoonicorn{
+    width: 78%;
+}
+
+#missionStatement{
+    position: absolute;
+    font-size: 1em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(189, 189, 189, 0.678);
+}
