@@ -31,7 +31,7 @@ function Vehicles(listing, price) {
   this.title = listing.title;
   this.price = price;
   this.lat = listing.mapUrl.slice(37, 45);
-  this.long = listing.mapUrl.slice(46, 57);
+  this.long = listing.mapUrl.slice(47, 57);
   this.image = listing.images[0];
   this.url = listing.url;
 }
@@ -45,22 +45,6 @@ app.get('/savedCars', displaySavedCars);
 app.delete('/savedCars/:id', deleteCar);
 app.get('/contact', (req, res) => {
   res.render('contact');
-<<<<<<< HEAD
-})
-app.get('/aboutus', (req, res) => {
-  res.render('aboutus');
-})
-
-app.get('/map', (req, res) => {
-  //client.query(`Select * FROM vehicles WHERE ROW = $1`).then(savedCars => {
-  //res.render('savedCars.ejs', { vehicles: savedCars.rows });
-  res.render('second.ejs')
-})
-
-
-
-
-=======
 });
 app.get('/aboutus', (req, res) => {
   res.render('aboutus');
@@ -70,7 +54,6 @@ app.get('/map', (req, res) => {
 
   res.render('second', { vehicles: req.query })
 });
->>>>>>> b329db72cccd68895d5774ade8b9f0cabef9fa63
 //Route Error
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
@@ -152,21 +135,11 @@ function displaySavedCars(req, res) {
   })
 }
 
-<<<<<<< HEAD
-/*function mapSavedCars(req, res) {
-  client.query(`SELECT * FROM vehicles;`).then(savedCars => {
-    res.render('second.ejs', { vehicles: savedCars.rows.lat });
-  }).catch(error => {
-    errorHandler(error, res);
-  })
-}*/
-=======
 function deleteCar(req, res) {
   client.query(`DELETE from vehicles WHERE id=$1;`, [req.params.id]).then(() => {
     res.redirect('/savedCars');
   })
 }
->>>>>>> b329db72cccd68895d5774ade8b9f0cabef9fa63
 
 function errorHandler(error, response) {
   response.render('error', {
