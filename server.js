@@ -45,11 +45,7 @@ app.post('/save', saveToDatabase);
 app.get('/savedCars', displaySavedCars);
 app.delete('/savedCars/:id', deleteCar);
 app.get('/contact', (req, res) => {
-<<<<<<< HEAD
-  res.render('contact');
-=======
   res.render('contact', { userId: [{ id: userid }] });
->>>>>>> a11b3157d160a948bfcb62a20b2695a56dc2ceed
 });
 app.get('/aboutus', (req, res) => {
   res.render('aboutus', { userId: [{ id: userid }] });
@@ -57,13 +53,6 @@ app.get('/aboutus', (req, res) => {
 app.get('/map', (req, res) => {
   res.render('second', { vehicles: req.query })
 });
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> a11b3157d160a948bfcb62a20b2695a56dc2ceed
 //Route Error
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
