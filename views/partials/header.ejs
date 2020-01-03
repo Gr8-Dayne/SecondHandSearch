@@ -1,6 +1,3 @@
-
-
-
 <header id="header1">
     <ul id="navbar">
         <li><button id="searchButton" onclick="displaySearch()">Search</button></li>
@@ -12,26 +9,31 @@
 </header>
 
 <header id="header2" style="display: none;">
-    <form id="searchForm" action="/" method="POST">
+    <form id="searchForm" action="/searchresult" method="POST">
         <fieldset>
             <ul>
-                <li><legend id="moneyPit">Find your next money pit!</legend></li>
-                <li><label>
-                    Location:
+                <li>
+                    <legend id="moneyPit">Find your next money pit!</legend>
+                </li>
+                <li><label class="label">
+                        Location:
+                    </label>
                     <input type="text" name="location">
-                </label></li>
-                <li><label>
-                    Make:
+                </li>
+                <li><label class="label">
+                        Make:
+                    </label>
                     <input type="text" name="make">
-                </label></li>
+                </li>
                 <li><label>
-                    Model:
-                    <input type="text" name="model" id="">
-                </label></li>
+                        Model:
+                        <input type="text" name="model" id="">
+                    </label></li>
                 <li><label>
-                    Year:
-                    <input type="text" name="year">
-                </label></li>
+                        Year:
+                        <input type="text" name="year">
+                    </label></li>
+                <input type="hidden" name="userId" value="<%= userId[0].id %>">
                 <li><input id="carSearchButton" type="submit" name="submit" value="SEARCH"></li>
             </ul>
         </fieldset>
@@ -39,13 +41,13 @@
 </header>
 
 <script>
-function displaySearch(){
-  var searchBar = document.getElementById("header2");
+    function displaySearch() {
+        var searchBar = document.getElementById("header2");
 
-  if (searchBar.style.display === "none") {
-    searchBar.style.display = "inline";
-  } else {
-    searchBar.style.display = "none";
-  }
-}
+        if (searchBar.style.display === "none") {
+            searchBar.style.display = "inline";
+        } else {
+            searchBar.style.display = "none";
+        }
+    }
 </script>

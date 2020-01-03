@@ -1,8 +1,8 @@
 
 
 var attr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+  'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 
   Url = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZXRlcm5hMiIsImEiOiJjaXppZjRoaTIwMmYxMndsNHJ4dzR1eWJsIn0.MvJ5fsV47RHlSAt2fBEKLg';
 
@@ -22,7 +22,7 @@ function infoFunction() {
   alert('This application would like to know your current location in order to show which vehicles are closer to you.');
 }
 
-function locateFunction(){
+function locateFunction() {
   if (navigator.geolocation) {
     navigator.geolocation.showPosition(showPosition);
     map.setView({
@@ -30,12 +30,13 @@ function locateFunction(){
       maxZoom: 16,
       timeout: 15000,
       watch: false,
-    })} else {
+    })
+  } else {
     alert('User denied web page access to location.')
   }
 }
 
-function showPosition(position){
+function showPosition(position) {
   alert('Your location: ' + position.coords.latitude + ', ' + position.coords.longitude)
 }
 
@@ -46,8 +47,8 @@ function onLocationFound(e) { //this function does three things if the location 
   var radius = e.accuracy / 10; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
 
 
-  var r= radius.toFixed(2);
-  var coordinates = e.latlng.lat + ", " + e.latlng.lng;
+  var r = radius.toFixed(2);
+  var coordinates = e.latlng.lat + ', ' + e.latlng.lng;
   var secondHandIcon = L.icon({
     iconUrl: 'https://img.icons8.com/cotton/64/000000/van.png',
 
@@ -56,32 +57,18 @@ function onLocationFound(e) { //this function does three things if the location 
     shadowAnchor: [22, 94]
   });
 
-  // input from CG to go here.....
-  function getUrlVars()
-  {
-    let vars = [], hash;
-    const hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-      hash = hashes[i].split('=');
-      vars.push(hash[0]);
-      vars[hash[0]] = hash[1];
-    }
-    return vars;
-  }
-  
-  console.log(getUrlVars());
-  
+  const vehicleLat = getUrlVars().lat;
+  const vehicleLong = getUrlVars().long;
 
   L.marker(e.latlng).addTo(map)
-    ;
+    .bindPopup('Your location is within' + radius + ' meters of this point');
 
-$.get('/map').then(a => console.log(a))
-
-
+  $.get('/map').then(a => console.log(a))
 
 
-  //L.marker([.lat, .long ], {icon: secondHandIcon}).addTo(map)
+
+
+  L.marker([Number(vehicleLat), Number(vehicleLong)], { icon: secondHandIcon }).addTo(map)
 }
 
 function onLocationError(e) {
@@ -97,8 +84,18 @@ map.on('locationerror', onLocationError);
 //This specifies that the locate method should run
 map.locate({
   setView: true, //this option centers the map on location and zooms
-  maxZoom: 16, // this option prevents the map from zooming further than 16, maintaining some spatial context even if the accuracy of the location reading allows for closer zoom
+  maxZoom: 14, // this option prevents the map from zooming further than 16, maintaining some spatial context even if the accuracy of the location reading allows for closer zoom
   timeout: 15000, // this option specifies when the browser will stop attempting to get a fix on the device's location. Units are miliseconds.
   watch: false, // you can set this option from false to true to track a user's movement over time instead of just once.
 });
 
+function getUrlVars() {
+  let vars = [], hash;
+  let hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+  for (var i = 0; i < hashes.length; i++) {
+    hash = hashes[i].split('=');
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  }
+  return vars;
+}

@@ -1,5 +1,5 @@
 .title {
-    font-size: 1.3em;
+    font-size: 1.8em;
     font-weight: bolder;
     height: 80px;
 }
@@ -8,3 +8,54 @@
     width: 400px;
     height: 350px;
 }
+
+.listingPrice, .marketPrice, .remove, .save, .checkbox{
+    font-size: 1.3em;
+    margin: 2%;
+}
+
+.remove, .save {
+    background-color: black;
+    color: white;
+}
+
+.teamDeck {
+    margin: 0.5%;
+    display: inline-block;
+}
+
+.name {
+    font-size: 2em;
+}
+
+.teamDeck img {
+    width: 80%;
+}
+
+#navbar li {
+    font-size: 2em;
+}
+
+.saveButton{
+    background-color: rgb(0, 0, 0);
+    color: red;
+}
+
+#searchButton{
+    background-color: rgba(0, 0, 0, 0.747);
+    color: hotpink;
+    width: 10vw;
+    height: 6vh;
+
+}
+
+#moneyPit{
+  text-decoration: underline;
+  text-shadow: 1px 1px rgba(56, 56, 56, 0.685);
+}
+
+#carSearchButton{
+  background-color: rgba(0, 0, 0, 0.747);
+  color: hotpink;
+}
+
