@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+  <title>Second Hand App</title>
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="public/styles/map.css">
+</head>
+
+<style>
+  #map {
+    height: 800px;
+  }
+</style>
+
+<body>
+  <h1>Second Hand Map</h1>
+
+  <div id="map"></div>
+  <%= vehicles.lat %>
+  <%= vehicles.long %>
+  <h2>Locations of the top 10 vehicles you searched for based on the criteria from the form data that was filled out.
+  </h2>
+  <footer>
+
+  </footer>
+
+  <script src="second.js"></script>
+</body>
+
+</html>
