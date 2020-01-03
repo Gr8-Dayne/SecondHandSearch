@@ -19,6 +19,23 @@
     color: white;
 }
 
+.teamDeck {
+    margin: 0.5%;
+    display: inline-block;
+}
+
+.name {
+    font-size: 2em;
+}
+
+.teamDeck img {
+    width: 80%;
+}
+
+#navbar li {
+    font-size: 2em;
+}
+
 .saveButton{
     background-color: rgb(0, 0, 0);
     color: red;
@@ -27,6 +44,9 @@
 #searchButton{
     background-color: rgba(0, 0, 0, 0.747);
     color: hotpink;
+    width: 10vw;
+    height: 6vh;
+
 }
 
 #moneyPit{

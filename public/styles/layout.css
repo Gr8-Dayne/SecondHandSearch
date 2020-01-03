@@ -60,11 +60,12 @@ td{
   width: 100%;
 }
 
+
 #aboutUsTitle{
   text-align: center;
   text-decoration: underline;
-  margin: 10vw;
-  font-size: 40px;
+  margin: 3%;
+  font-size: 3em;
   text-shadow: 3px 2px rgba(56, 56, 56, 0.685);
 }
 
@@ -73,7 +74,7 @@ td{
   margin-bottom: 100px;
 }
 
-#theTeamCards{
+/*#theTeamCards{
   margin: 10vmax;
 }
 
@@ -95,7 +96,7 @@ td{
 #Dayne{
   max-width: 70%;
   padding: 10vmax;
-}
+} */
 
 #emailTeam{
   text-align: center;

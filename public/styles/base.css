@@ -18,54 +18,12 @@ body {
   right: 0;
 }
 
-/* #login{
-  top: 0%;
-  bottom: 0%;
-} */
-
 #searchForm{
   padding-top: 1vh;
 }
 
 #carInstance{
   width: 100%;
-}
-
-#aboutUsTitle{
-  text-align: center;
-  text-decoration: underline;
-  margin: 10vw;
-  font-size: 40px;
-  text-shadow: 3px 2px rgba(56, 56, 56, 0.685);
-}
-
-#theTeam{
-  text-align: center;
-  margin-bottom: 100px;
-}
-
-#theTeamCards{
-  margin: 10vmax;
-}
-
-#Phong{
-  max-width: 70%;
-  padding: 10vmax;
-}
-
-#Greg{
-  max-width: 70%;
-  padding: 10vmax;
-}
-
-#Jitendra{
-  max-width: 70%;
-  padding: 10vmax;
-}
-
-#Dayne{
-  max-width: 70%;
-  padding: 10vmax;
 }
 
 #emailTeam{
