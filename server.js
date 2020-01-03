@@ -45,14 +45,12 @@ app.post('/save', saveToDatabase);
 app.get('/savedCars', displaySavedCars);
 app.delete('/savedCars/:id', deleteCar);
 app.get('/contact', (req, res) => {
-  res.render('contact');
+  res.render('contact', { userId: [{ id: userid }] });
 });
 app.get('/aboutus', (req, res) => {
-  res.render('aboutus');
+  res.render('aboutus', { userId: [{ id: userid }] });
 });
 app.get('/map', (req, res) => {
-  console.log('req.query :', req.query);
-
   res.render('second', { vehicles: req.query })
 });
 //Route Error
@@ -60,11 +58,9 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 
 //TODO: ensure the username is the actual data being pulled
 function checkUsernameWithDatabase(req, res) {
-  console.log('req :', req);
   const checkInstruction = `Select * FROM users WHERE Username = $1`;
   const value = [req.body.username.toLowerCase()];
   client.query(checkInstruction, value).then(sqlResult => {
-    console.log('sqlResult :', sqlResult);
     if (sqlResult.rowCount > 0) {
       console.log('The user is already here');
       userid = sqlResult.rows[0].id;
@@ -87,7 +83,6 @@ function getLoginPage(req, res) {
 }
 
 async function postSearchResults(req, res) {
-  console.log('user :', userid);
   inputMake = req.body.make;
   inputModel = req.body.model;
   inputYear = req.body.year;
@@ -154,7 +149,6 @@ function retrieveAndReturnMarketPrice() {
 }
 
 function displaySavedCars(req, res) {
-  console.log('userid :', userid);
   client.query(`SELECT * FROM vehicles WHERE userID = ${userid};`).then(savedCars => {
     res.render('savedCars', { vehicles: savedCars.rows, userId: [{ id: userid }] });
   }).catch(error => {
