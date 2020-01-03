@@ -9,14 +9,15 @@ var attr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetM
 var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   subdomains: 'abcd',
-  minZoom: 0,
-  maxZoom: 50,
+  minZoom: 3,
+  maxZoom: 20,
   ext: 'png'
 });
 
 var map = L.map('map', {
   zoomSnap: 10,
-  layers:[Stamen_Terrain]}).fitWorld();
+  layers: [Stamen_Terrain]
+}).fitWorld();
 
 function infoFunction() {
   alert('This application would like to know your current location in order to show which vehicles are closer to you.');
@@ -61,14 +62,15 @@ function onLocationFound(e) { //this function does three things if the location 
   const vehicleLong = getUrlVars().long;
 
   L.marker(e.latlng).addTo(map)
-    .bindPopup('Your location is within' + radius + ' meters of this point');
+    .bindPopup('Your location is within ' + radius + ' meters of this point');
 
-  $.get('/map').then(a => console.log(a))
+  //$.get('/map').then(a => console.log(a))
 
 
 
 
   L.marker([Number(vehicleLat), Number(vehicleLong)], { icon: secondHandIcon }).addTo(map)
+  map.flyTo([vehicleLat, vehicleLong]);
 }
 
 function onLocationError(e) {
@@ -83,10 +85,9 @@ map.on('locationerror', onLocationError);
 
 //This specifies that the locate method should run
 map.locate({
-  setView: true, //this option centers the map on location and zooms
-  maxZoom: 50, // this option prevents the map from zooming further than 16, maintaining some spatial context even if the accuracy of the location reading allows for closer zoom
-  timeout: 15000, // this option specifies when the browser will stop attempting to get a fix on the device's location. Units are miliseconds.
-  watch: false, // you can set this option from false to true to track a user's movement over time instead of just once.
+  setView: true,
+  timeout: 15000,
+  watch: false,
 });
 
 function getUrlVars() {
