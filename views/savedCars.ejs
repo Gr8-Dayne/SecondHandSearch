@@ -16,7 +16,7 @@
         <a id="cards" href="<%= vehicles[i].url %>">
             <h2 class="title"><%= vehicles[i].title %></h2>
             <h3 class="listingPrice">Listing Price: <%= vehicles[i].price %></h3>
-            <h3 class="marketPrice">Market Price: <%= vehicles[i].market_value %></h3>
+            <h3 class="marketPrice">Market Price: $<%= vehicles[i].market_value %></h3>
             <img class="carImages" src="<%= vehicles[i].image_url %>" alt="image">
             <form action="/savedCars/<%= vehicles[i].id %>?_method=DELETE" method="POST">
                 <input class="remove" type="submit" name="remove" value="REMOVE" id="">
