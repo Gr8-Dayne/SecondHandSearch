@@ -1,5 +1,14 @@
+*{
+  color: black;
+  text-decoration: underline;
+  text-shadow: 1px 1px rgb(255, 255, 255);
+}
+
 body {
-    background-color: rgba(1, 138, 74, 0.651);
-    left: 0;
-    right: 0;
-  }
+  background-color: rgba(128, 128, 128, 0.753);
+  background-image: url(../Images/wood.jpg);
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
