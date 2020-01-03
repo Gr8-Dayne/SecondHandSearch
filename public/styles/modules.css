@@ -74,9 +74,20 @@
 
 #missionStatement{
     position: absolute;
-    font-size: 1em;
+    font-size: 1.3em;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(189, 189, 189, 0.678);
+    background-color: rgba(189, 189, 189, 0.651);
+}
+
+@media( min-width: 960px ) {
+    #missionStatement{
+        position: absolute;
+        font-size: 2em;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(189, 189, 189, 0.774);
+    }
 }

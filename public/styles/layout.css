@@ -135,6 +135,10 @@ td{
 
 #emailTeam{
   text-align: center;
+  background-color: rgba(141, 141, 141, 0.733);
+  margin-left: 20vw;
+  margin-right: 20vw;
+  margin-top: 20vh;
 }
 
 #emailMessageBlock{
