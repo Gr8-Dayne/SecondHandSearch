@@ -11,6 +11,7 @@
 
 <body>
     <%- include('partials/header') %>
+    <%= console.log(userId) %>
     <section id="allVehicles">
         <% for(let i = 0; i < vehicles.length; i++) { %>
         <a id="cards" href="<%= vehicles[i].url %>">
@@ -23,6 +24,7 @@
                 <input type="hidden" name="lat" value="<%= vehicles[i].lat %>">
                 <input type="hidden" name="long" value="<%= vehicles[i].long %>">
                 <input type="hidden" name="image" value="<%= vehicles[i].image %>">
+                <input type="hidden" name="userId" value="<%= userId[0].id %>">
                 <input type="hidden" name="url" value="<%= vehicles[i].url %>">
                 <input class="checkbox" type="checkbox" name="vehicle" required>
                 <input class="save" type="submit" value="save">

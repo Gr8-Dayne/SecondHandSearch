@@ -6,6 +6,7 @@ const express = require('express');
 const superagent = require('superagent');
 const app = express();
 const pg = require('pg');
+// eslint-disable-next-line no-unused-vars
 const ejs = require('ejs');
 const methodoverride = require('method-override');
 const craigslist = require('node-craigslist');
@@ -26,6 +27,7 @@ let inputMake;
 let inputModel;
 let inputYear;
 let inputLocation;
+let userid;
 
 function Vehicles(listing, price) {
   this.title = listing.title;
@@ -35,30 +37,49 @@ function Vehicles(listing, price) {
   this.image = listing.images[0];
   this.url = listing.url;
 }
-
-
-
-app.get('/', getSearchPage);
-app.post('/', postSearchResults);
+//TODO: change the routes to the new ejs pages once login, search, and results are separated
+app.get('/', getLoginPage);
+app.post('/login', checkUsernameWithDatabase);
+app.post('/searchresult', postSearchResults);
 app.post('/save', saveToDatabase);
 app.get('/savedCars', displaySavedCars);
 app.delete('/savedCars/:id', deleteCar);
 app.get('/contact', (req, res) => {
-  res.render('contact');
+  res.render('contact', { userId: [{ id: userid }] });
 });
 app.get('/aboutus', (req, res) => {
-  res.render('aboutus');
+  res.render('aboutus', { userId: [{ id: userid }] });
 });
 app.get('/map', (req, res) => {
-  console.log('req.query :', req.query);
-
   res.render('second', { vehicles: req.query })
 });
 //Route Error
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
-function getSearchPage(req, res) {
-  res.render('index');
+//TODO: ensure the username is the actual data being pulled
+function checkUsernameWithDatabase(req, res) {
+  const checkInstruction = `Select * FROM users WHERE Username = $1`;
+  const value = [req.body.username.toLowerCase()];
+  client.query(checkInstruction, value).then(sqlResult => {
+    if (sqlResult.rowCount > 0) {
+      console.log('The user is already here');
+      userid = sqlResult.rows[0].id;
+      res.render('search', { userId: [{ id: sqlResult.rows[0].id }] });
+    } else {
+      const instruction = `INSERT INTO users (Username) VALUES($1) RETURNING ID`;
+      client.query(instruction, value).then(sqlRes => {
+        userid = sqlRes.rows[0].id;
+        res.render('search', { userId: [{ id: sqlRes.rows[0].id }] });
+
+      })
+    }
+  })
+
+
+}
+
+function getLoginPage(req, res) {
+  res.render('login');
 }
 
 async function postSearchResults(req, res) {
@@ -89,7 +110,7 @@ async function postSearchResults(req, res) {
         errorHandler(error, res);
       }
     }
-    res.render('searchResult', { vehicles: vehicleResultsArray });
+    res.render('searchResult', { vehicles: vehicleResultsArray, userId: [{ id: req.body.userId }] });
   } catch (error) {
     errorHandler(error, res);
   }
@@ -104,9 +125,9 @@ async function saveToDatabase(req, res) {
       console.log('The vehicle is already here');
       res.status(204).send();
     } else {
-      const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL, price, market_value)
-  VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-      let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url, req.body.price, marketValue];
+      const instruction = `INSERT INTO vehicles(title, lat, long, image_URL, CL_URL, price, market_value, userID)
+      VALUES ($1, $2, $3, $4, $5, $6 ,$7, $8) Returning userID`;
+      let values = [req.body.title, req.body.lat, req.body.long, req.body.image, req.body.url, req.body.price, marketValue, req.body.userId];
       try {
         client.query(instruction, values);
         res.status(204).send();
@@ -128,8 +149,8 @@ function retrieveAndReturnMarketPrice() {
 }
 
 function displaySavedCars(req, res) {
-  client.query(`SELECT * FROM vehicles;`).then(savedCars => {
-    res.render('savedCars.ejs', { vehicles: savedCars.rows });
+  client.query(`SELECT * FROM vehicles WHERE userID = ${userid};`).then(savedCars => {
+    res.render('savedCars', { vehicles: savedCars.rows, userId: [{ id: userid }] });
   }).catch(error => {
     errorHandler(error, res);
   })
