@@ -2,34 +2,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/ultimate.css">
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles/ultimate.css">
+  <title>Login</title>
 </head>
-
+<div>
+  <video autoplay muted loop id="loginBackground">
+      <source src="https://thumbs.gfycat.com/ForkedSinfulHyrax-mobile.mp4" type="video/mp4">
+  </video>
+</div>
+<div>
+  <img id="loginBackground2" src="http://img0.joyreactor.com/pics/post/360-sport-car-gif-1215262.gif" alt="360Drift">
+</div>
 <body>
-    <!-- Main page/form to search cars and button to view saved cars -->
-    <header id="header1">
-        <ul id="navbar">
-            <li><a href="/">Home</a></li>
-            <li><a href="savedCars">My Cars</a></li>
-            <li><h1>Second Hand Search</h1></li>
-            <li><a href="/">About</a></li>
-            <li><a href="/">Contact Us</a></li>
-        </ul>
-    </header>
-
-    <main>
-      <form id="login" action="">
-        <h3>Login</h3>
-        Username:
-        <input type="text" name="username" required>
-        <input type="submit" value="submit">
-      </form>
-    </main>
-    <footer> &copy;SecondHandSearch Team </footer>
+  <!-- Main page/form to search cars and button to view saved cars -->
+  <main id="login">
+    <form id="loginBox" action="/login" method="POST">
+      <h3>Need a Hand?</h3>
+      Username:
+      <input type="text" name="username" required>
+      <input id="loginButton" type="submit" value="submit">
+    </form>
+  </main>
+  <footer>&copy;SecondHandSearch</footer>
 </body>
 
 </html>
