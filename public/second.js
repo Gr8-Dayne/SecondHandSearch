@@ -26,7 +26,7 @@ function locateFunction(){
   if (navigator.geolocation) {
     navigator.geolocation.showPosition(showPosition);
     map.setView({
-      setView: false,
+      setView: true,
       maxZoom: 16,
       timeout: 15000,
       watch: false,
