@@ -8,18 +8,25 @@
   <link rel="stylesheet" href="styles/ultimate.css">
   <title>Login</title>
 </head>
-
+<div>
+  <video autoplay muted loop id="loginBackground">
+      <source src="https://thumbs.gfycat.com/ForkedSinfulHyrax-mobile.mp4" type="video/mp4">
+  </video>
+</div>
+<div>
+  <img id="loginBackground2" src="http://img0.joyreactor.com/pics/post/360-sport-car-gif-1215262.gif" alt="360Drift">
+</div>
 <body>
   <!-- Main page/form to search cars and button to view saved cars -->
-  <main>
-    <form id="login" action="/login" method="POST">
-      <h3>Login</h3>
+  <main id="login">
+    <form id="loginBox" action="/login" method="POST">
+      <h3>Need a Hand?</h3>
       Username:
       <input type="text" name="username" required>
-      <input type="submit" value="submit">
+      <input id="loginButton" type="submit" value="submit">
     </form>
   </main>
-  <footer> &copy;SecondHandSearch Team</footer>
+  <footer>&copy;SecondHandSearch</footer>
 </body>
 
 </html>

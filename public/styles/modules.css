@@ -25,6 +25,8 @@
 }
 
 .name {
+    color: rgb(153, 153, 153);
+    text-shadow: 2px 2px rgb(255, 255, 255);
     font-size: 2em;
 }
 
@@ -33,7 +35,7 @@
 }
 
 #navbar li {
-    font-size: 2em;
+    font-size: 1em;
 }
 
 .saveButton{
@@ -43,19 +45,51 @@
 
 #searchButton{
     background-color: rgba(0, 0, 0, 0.747);
-    color: hotpink;
-    width: 10vw;
-    height: 6vh;
-
+    color: white;
+    height: 4vh;
 }
 
 #moneyPit{
   text-decoration: underline;
-  text-shadow: 1px 1px rgba(56, 56, 56, 0.685);
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.877);
 }
 
 #carSearchButton{
   background-color: rgba(0, 0, 0, 0.747);
-  color: hotpink;
+  color: white;
 }
 
+.contactButtons{
+    background-color: rgb(0, 0, 0);
+    color: yellow;
+}
+
+#hooner {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+#hoonicorn{
+    width: 78%;
+}
+
+#missionStatement{
+    position: absolute;
+    font-size: 1.3em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(189, 189, 189, 0.651);
+}
+
+@media( min-width: 960px ) {
+    #missionStatement{
+        position: absolute;
+        font-size: 2em;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(189, 189, 189, 0.774);
+    }
+}

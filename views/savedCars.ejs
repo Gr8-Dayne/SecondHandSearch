@@ -21,8 +21,8 @@
             <form action="/savedCars/<%= vehicles[i].id %>?_method=DELETE" method="POST">
                 <input class="remove" type="submit" name="remove" value="REMOVE" id="">
             </form>
-            <a href="/map?lat=<%= vehicles[i].lat %>&long=<%= vehicles[i].long %>">
-                Lookup Map</a>
+            <a id="mapLink" href="/map?lat=<%= vehicles[i].lat %>&long=<%= vehicles[i].long %>">
+                See On Map</a>
             <% } %>
         </a>
     </section>
