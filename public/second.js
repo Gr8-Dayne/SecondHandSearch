@@ -1,3 +1,5 @@
+
+
 var attr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
       'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -13,7 +15,7 @@ var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terr
 });
 
 var map = L.map('map', {
-  zoomSnap: 5.0,
+  zoomSnap: 10,
   layers:[Stamen_Terrain]}).fitWorld();
 
 function infoFunction() {
@@ -24,7 +26,7 @@ function locateFunction(){
   if (navigator.geolocation) {
     navigator.geolocation.showPosition(showPosition);
     map.setView({
-      setView: true,
+      setView: false,
       maxZoom: 16,
       timeout: 15000,
       watch: false,
@@ -55,16 +57,31 @@ function onLocationFound(e) { //this function does three things if the location 
   });
 
   // input from CG to go here.....
+  function getUrlVars()
+  {
+    let vars = [], hash;
+    const hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  }
+  
+  console.log(getUrlVars());
+  
 
   L.marker(e.latlng).addTo(map)
-    .bindPopup("Your location is within" + radius + " meters of this point");
+    ;
 
 $.get('/map').then(a => console.log(a))
 
 
 
 
-  L.marker([.lat, .long ], {icon: secondHandIcon}).addTo(map)
+  //L.marker([.lat, .long ], {icon: secondHandIcon}).addTo(map)
 }
 
 function onLocationError(e) {
