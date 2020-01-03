@@ -15,7 +15,7 @@ var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terr
 });
 
 var map = L.map('map', {
-  zoomSnap: 10,
+  // zoomSnap: 10,
   layers: [Stamen_Terrain]
 }).fitWorld();
 
